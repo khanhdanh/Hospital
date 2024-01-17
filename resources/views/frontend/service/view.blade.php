@@ -30,10 +30,10 @@
                                 <div class="department_thumb">
                                     <img src="{{ $service->photo }}" alt="">
                                 </div>
-                                <div class="service_content">
+                                <div class="department_content">
                                     <h3 style="font-weight: bold"><a href="#">{{ $service->name }}</a></h3>
-                                    <h3>Description:</h3>{{ $service->description }}
-                                    <h3>Cost:</h3>{{ $service->service_cost }}
+                                    <p><h4>Description:</h4>{{ $service->description }}</p>
+                                    <p><h4>Cost:</h4>{{ $service->service_cost }} </p>
                                 </div>
                             </div>
                         </div>

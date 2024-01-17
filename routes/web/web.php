@@ -82,6 +82,7 @@ Route::get('/search/appointment/{doctor}', [AppointmentController::class, 'appoi
 Route::get('ui/department/view', 'Frontend\UiDepartmentController@index')->name('ui.department');
 Route::get('ui/doctor/view', 'Frontend\UiDoctorController@index')->name('ui.doctor');
 Route::get('ui/service/view', 'Frontend\UiServiceController@index')->name('ui.service'); //UiService
+Route::get('ui/contact/view', 'Frontend\UiContactController@index')->name('ui.contact'); //UiContact
 
 // Live Chat
 Route::get('/chat', 'ChatsController@index');
