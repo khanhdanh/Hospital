@@ -9,6 +9,7 @@ use App\Http\Controllers\UIController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\StripeController;
+
 use Illuminate\Support\Facades\Auth;
 
 /*
@@ -82,6 +83,7 @@ Route::get('/search/appointment/{doctor}', [AppointmentController::class, 'appoi
 Route::get('ui/department/view', 'Frontend\UiDepartmentController@index')->name('ui.department');
 Route::get('ui/doctor/view', 'Frontend\UiDoctorController@index')->name('ui.doctor');
 Route::get('ui/service/view', 'Frontend\UiServiceController@index')->name('ui.service'); //UiService
+Route::get('ui/contact/view', 'Frontend\UiContactController@index')->name('ui.contact');
 
 // Live Chat
 Route::get('/chat', 'ChatsController@index');

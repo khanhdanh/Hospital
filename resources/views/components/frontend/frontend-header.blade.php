@@ -26,17 +26,16 @@
         <div id="sticky-header" class="main-header-area">
             <div class="container">
                 <div class="row align-items-center">
-                    <div class="col-xl-3 col-lg-2">
-                        <div class="logo">
-                            <a href="{{ route('home.index') }}">
-                                <img style="width: 60%" src="frontend/img/z5053597913387_cac673d6b280671378b37443c92a9100.jpg" alt="" />
-                            </a>
-                        </div>
-                    </div>
-                    <div class="col-xl-6 col-lg-7">
+                    <div class="">
                         <div class="main-menu d-none d-lg-block">
                             <nav>
+
                                 <ul id="navigation">
+                                    <li> <a href="{{ route('home.index') }}">
+                                            <img style="width: 40%"
+                                                src="{{ asset('frontend/img/z5053597913387_cac673d6b280671378b37443c92a9100.jpg') }}"/>
+
+                                        </a></li>
                                     <li><a href="{{ route('ui.department') }}">DEPARTMENTS</a></li>
                                     <li><a href="{{ route('ui.service') }}">SERVICES</a></li>
                                     <!-- <li>
@@ -53,7 +52,7 @@
                                         </ul>
                                     </li>
                                     <li><a href="{{ route('ui.doctor') }}">DOCTOR</a></li>
-                                    <li><a href="contact.html">CONTACT</a></li>
+                                    <li><a href="{{ route('ui.contact') }}">CONTACT</a></li>
                                 </ul>
                             </nav>
                         </div>
@@ -61,7 +60,7 @@
                     <div class="col-xl-3 col-lg-3 d-none d-lg-block">
                         <div class="Appointment">
                             <div class="book_btn d-none d-lg-block">
-                                <a href="{{ route('search') }}" >FINDING DOCTOR</a>
+                                <a href="{{ route('search') }}">FINDING DOCTOR</a>
                             </div>
                         </div>
                     </div>
