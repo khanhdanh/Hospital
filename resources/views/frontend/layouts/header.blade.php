@@ -54,7 +54,7 @@
                                             <li><a href="single-blog.html">single-blog</a></li>
                                         </ul>
                                     </li> -->
-                                    <li><a href="{{ route('ui.service') }}">Sersssssssssssssssvices</a></li>
+                                    <li><a href="{{ route('ui.service') }}">Services</a></li>
                                    <!-- <li>
                                         <a href="#">Pages <i class="ti-angle-down"></i></a>
                                         <ul class="submenu">
