@@ -51,10 +51,10 @@
                         Useful Links
                         </h3>
                         <ul>
-                            <li><a href="#">ABOUT</a></li>
-                            <li><a href="#">BLOG</a></li>
-                            <li><a href="#">CONTACT</a></li>
+                            <li><a href="{{ route('ui.about') }}">ABOUT</a></li>
+                            <li><a href="{{ route('ui.contact') }}">CONTACT</a></li>
                             <li><a href="{{ route('appointment.add') }}">APPOINTMENT</a></li>
+                            <li><a href="{{ route('ui.service') }}">SERVICE</a></li>
                         </ul>
                     </div>
                 </div>

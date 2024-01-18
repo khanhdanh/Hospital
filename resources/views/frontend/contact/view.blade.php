@@ -7,10 +7,12 @@
             <div class="col-xl-6 col-lg-6">
                 <div class="welcome_thumb">
                     <div class="thumb_1">
-                        <img src="{{ asset('frontend/img/about/x1.png.pagespeed.ic.gmBngJH7-K.png') }}" alt="" />
+                        <img src="{{ asset('frontend/img/about/x1.png.pagespeed.ic.gmBngJH7-K.png') }}"
+                            alt="" />
                     </div>
                     <div class="thumb_2">
-                        <img src="{{ asset('frontend/img/about/x2.png.pagespeed.ic.jYbHUnUZMB.png') }}" alt="" />
+                        <img src="{{ asset('frontend/img/about/x2.png.pagespeed.ic.jYbHUnUZMB.png') }}"
+                            alt="" />
                     </div>
                 </div>
             </div>

@@ -51,8 +51,12 @@
                                             <li><a href="{{ route('patient.register') }}">REGISTER PATIENT</a></li>
                                         </ul>
                                     </li>
-                                    <li><a href="{{ route('ui.doctor') }}">DOCTOR</a></li>
-                                    <li><a href="{{ route('ui.contact') }}">CONTACT</a></li>
+                                    <li><a href="{{ route('ui.doctor') }}">DOCTORS</a></li>
+                                    <li><a href="{{ route('ui.about') }}">ABOUT</a>
+                                        <ul class="submenu">
+                                            <li><a href="{{ route('ui.contact') }}">CONTACT</a></li>
+                                        </ul>
+                                    </li>
                                 </ul>
                             </nav>
                         </div>

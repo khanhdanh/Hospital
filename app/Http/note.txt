@@ -1,2 +1,0 @@
-Tạo thêm StaffController.
-Xem qua cái UIController để sửa lại.

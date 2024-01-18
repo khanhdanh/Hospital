@@ -83,6 +83,7 @@ Route::get('ui/department/view', 'Frontend\UiDepartmentController@index')->name(
 Route::get('ui/doctor/view', 'Frontend\UiDoctorController@index')->name('ui.doctor');
 Route::get('ui/service/view', 'Frontend\UiServiceController@index')->name('ui.service'); //UiService
 Route::get('ui/contact/view', 'Frontend\UiContactController@index')->name('ui.contact'); //UiContact
+Route::get('ui/about/view', 'Frontend\UiAboutController@index')->name('ui.about'); //UiAbout
 
 // Live Chat
 Route::get('/chat', 'ChatsController@index');
