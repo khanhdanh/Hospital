@@ -13,7 +13,7 @@
                 </div>
             </div>
         </div>
-        <div class="our_service_area">
+        <div class="our_department_area">
             <div class="container">
                 <div class="row">
                     <div class="col-xl-12">
@@ -24,22 +24,23 @@
                     </div>
                 </div>
                 <div class="row">
-                @foreach($services as $service)
-                    <div class="col-xl-4 col-md-6 col-lg-4">
-                        <div class="single_service">
-                            <div class="service_thumb">
-                                <img src="{{ $service->photo }}" alt="">
-                            </div>
-                            <div class="service_content">
-                                <h3><a href="#">{{ $service->name }}</a></h3>
-                                <p>{{ $service->description }}</p>
+                    @foreach ($services as $service)
+                        <div class="col-xl-4 col-md-6 col-lg-4">
+                            <div class="single_department">
+                                <div class="department_thumb">
+                                    <img src="{{ $service->photo }}" alt="">
+                                </div>
+                                <div class="department_content">
+                                    <h3 style="font-weight: bold"><a href="#">{{ $service->name }}</a></h3>
+                                    <p><h4>Description:</h4>{{ $service->description }}</p>
+                                    <p><h4>Cost:</h4>{{ $service->service_cost }} </p>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                @endforeach
+                    @endforeach
                 </div>
             </div>
         </div>
     @endsection
 
-    </x-frontend.frontend-master>
+</x-frontend.frontend-master>

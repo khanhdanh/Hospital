@@ -10,7 +10,7 @@ class UiServiceController extends Controller
 {
     public function index()
     {
-        $service = Service::all();
-        return view('frontend.service.view', compact('service'));
+        $services = Service::all();
+        return view('frontend.service.view', compact('services'));
     }
 }
