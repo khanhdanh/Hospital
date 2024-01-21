@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 18, 2024 at 05:22 AM
+-- Generation Time: Jan 21, 2024 at 04:48 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -154,6 +154,15 @@ CREATE TABLE `roles` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Dumping data for table `roles`
+--
+
+INSERT INTO `roles` (`id`, `name`, `slug`, `created_at`, `updated_at`) VALUES
+(1, 'Super admin', 'super-admin', '2021-10-26 09:44:59', NULL),
+(2, 'Doctor', 'doctor', '2023-12-20 04:15:12', '2024-01-24 13:17:42'),
+(3, 'Staff', 'nurse', NULL, NULL);
+
 -- --------------------------------------------------------
 
 --
@@ -166,6 +175,15 @@ CREATE TABLE `role_user` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `role_user`
+--
+
+INSERT INTO `role_user` (`role_id`, `user_id`, `created_at`, `updated_at`) VALUES
+(1, 1, NULL, NULL),
+(1, 2, NULL, NULL),
+(2, 3, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -233,7 +251,8 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `photo`, `email`, `phone`, `status`, `email_verified_at`, `password`, `slug`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'Khoa Nguyen', 'images/default-user-photo.jpg', 'anhkhoanguyen366@gmail.com', 966164566, 1, NULL, '$2y$10$xlfoG5GlbS0TNM1R/7nsJehFM1vWRiFHz8ksmRxpBHoWQ3hZE9cfm', NULL, NULL, '2024-01-16 05:34:30', '2024-01-16 05:34:30');
+(1, 'Super Admin', '', 'superadmin@gmail.com', 198756545, 1, NULL, '$2y$10$kepYDm9cuMCsR6xKR.vOXeDZ9zFjArsPmseEAvw/o1Uy1ErF.SxTW', NULL, NULL, '2021-10-21 08:20:50', '2021-10-21 08:20:50'),
+(2, 'Khoa Nguyen', '', 'anhkhoanguyen366@gmail.com', 966164566, 1, NULL, '$2y$10$kepYDm9cuMCsR6xKR.vOXeDZ9zFjArsPmseEAvw/o1Uy1ErF.SxTW', NULL, NULL, '2024-01-21 04:22:05', '2024-01-21 04:22:05');
 
 -- --------------------------------------------------------
 
@@ -258,10 +277,8 @@ CREATE TABLE `user_roles` (
 
 INSERT INTO `user_roles` (`id`, `name`, `serial`, `creator`, `slug`, `status`, `created_at`, `updated_at`) VALUES
 (1, 'Super Admin', 1, NULL, 'super-admin', NULL, '2021-09-30 03:51:09', '2021-09-30 03:51:09'),
-(2, 'Admin', 2, NULL, 'admin', NULL, '2021-09-30 03:51:09', '2021-09-30 03:51:09'),
-(3, 'Doctor', 3, NULL, 'doctor', NULL, '2021-09-30 03:51:09', '2021-09-30 03:51:09'),
-(4, 'Staff', 4, NULL, 'nurse', NULL, '2021-09-30 03:51:09', '2021-09-30 03:51:09'),
-(5, 'Patient', 5, NULL, 'patient', NULL, '2021-09-30 03:51:09', '2021-09-30 03:51:09');
+(2, 'Doctor', 2, NULL, 'doctor', NULL, '2021-09-30 03:51:09', '2021-09-30 03:51:09'),
+(3, 'Staff', 3, NULL, 'nurse', NULL, '2021-09-30 03:51:09', '2021-09-30 03:51:09');
 
 --
 -- Indexes for dumped tables
@@ -292,6 +309,20 @@ ALTER TABLE `patients`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `roles`
+--
+ALTER TABLE `roles`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `name` (`name`,`slug`);
+
+--
+-- Indexes for table `role_user`
+--
+ALTER TABLE `role_user`
+  ADD PRIMARY KEY (`role_id`,`user_id`),
+  ADD UNIQUE KEY `user_id` (`user_id`);
+
+--
 -- Indexes for table `services`
 --
 ALTER TABLE `services`
@@ -307,7 +338,9 @@ ALTER TABLE `staffs`
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `users_email_unique` (`email`),
+  ADD UNIQUE KEY `users_phone_unique` (`phone`);
 
 --
 -- Indexes for table `user_roles`
@@ -359,7 +392,7 @@ ALTER TABLE `staffs`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `user_roles`
