@@ -38,8 +38,7 @@
 							<th>Email</th>
 							<th>Phone</th>
 							<th>Speciality</th>
-							<th>Created At</th>
-							<th>Updated At</th>
+
 							<th colspan="2" class="text-center">Action</th>
 						</tr>
 					</thead>
@@ -55,8 +54,7 @@
 							<td>{{ $doctor->email }}</td>
 							<td>{{ $doctor->phone }}</td>
 							<td>{{ $doctor->speciality }}</td>
-							<td>{{ $doctor->created_at->diffForHumans() }}</td>
-							<td>{{ $doctor->updated_at->diffForHumans() }}</td>
+
 							<td>
 								<button type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#modal-{{ $doctor->id }}">
 				                  	Edit

@@ -5,10 +5,10 @@
             <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
         </li>
         <li class="nav-item d-none d-sm-inline-block">
-            <a href="index.php" class="nav-link">Home</a>
+            <a href="{{ route('admin.index') }}" class="nav-link">Admin Index</a>
         </li>
         <li class="nav-item d-none d-sm-inline-block">
-            <a href="#" class="nav-link">Contact</a>
+            <a href="{{ route('home.index')}}" class="nav-link">Home Index</a>
         </li>
     </ul>
     <!-- Right navbar links -->
@@ -21,13 +21,14 @@
             <div class="navbar-search-block">
                 <form class="form-inline">
                     <div class="input-group input-group-sm">
-                        <input class="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search">
+                        <input class="form-control form-control-navbar" type="search" placeholder="Search"
+                            aria-label="Search">
                         <div class="input-group-append">
                             <button class="btn btn-navbar" type="submit">
-                            <i class="fas fa-search"></i>
+                                <i class="fas fa-search"></i>
                             </button>
                             <button class="btn btn-navbar" type="button" data-widget="navbar-search">
-                            <i class="fas fa-times"></i>
+                                <i class="fas fa-times"></i>
                             </button>
                         </div>
                     </div>
@@ -44,11 +45,12 @@
                 <a href="#" class="dropdown-item">
                     <!-- Message Start -->
                     <div class="media">
-                        <img src="{{ asset('dist/img/user1-128x128.jpg') }}" alt="User Avatar" class="img-size-50 mr-3 img-circle">
+                        <img src="{{ asset('dist/img/user1-128x128.jpg') }}" alt="User Avatar"
+                            class="img-size-50 mr-3 img-circle">
                         <div class="media-body">
                             <h3 class="dropdown-item-title">
-                            Brad Diesel
-                            <span class="float-right text-sm text-danger"><i class="fas fa-star"></i></span>
+                                Brad Diesel
+                                <span class="float-right text-sm text-danger"><i class="fas fa-star"></i></span>
                             </h3>
                             <p class="text-sm">Call me whenever you can...</p>
                             <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
@@ -60,11 +62,12 @@
                 <a href="#" class="dropdown-item">
                     <!-- Message Start -->
                     <div class="media">
-                        <img src="{{ asset('dist/img/user8-128x128.jpg') }}" alt="User Avatar" class="img-size-50 img-circle mr-3">
+                        <img src="{{ asset('dist/img/user8-128x128.jpg') }}" alt="User Avatar"
+                            class="img-size-50 img-circle mr-3">
                         <div class="media-body">
                             <h3 class="dropdown-item-title">
-                            John Pierce
-                            <span class="float-right text-sm text-muted"><i class="fas fa-star"></i></span>
+                                John Pierce
+                                <span class="float-right text-sm text-muted"><i class="fas fa-star"></i></span>
                             </h3>
                             <p class="text-sm">I got your message bro</p>
                             <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
@@ -76,11 +79,12 @@
                 <a href="#" class="dropdown-item">
                     <!-- Message Start -->
                     <div class="media">
-                        <img src="{{ asset('dist/img/user3-128x128.jpg') }}" alt="User Avatar" class="img-size-50 img-circle mr-3">
+                        <img src="{{ asset('dist/img/user3-128x128.jpg') }}" alt="User Avatar"
+                            class="img-size-50 img-circle mr-3">
                         <div class="media-body">
                             <h3 class="dropdown-item-title">
-                            Nora Silvester
-                            <span class="float-right text-sm text-warning"><i class="fas fa-star"></i></span>
+                                Nora Silvester
+                                <span class="float-right text-sm text-warning"><i class="fas fa-star"></i></span>
                             </h3>
                             <p class="text-sm">The subject goes here</p>
                             <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>

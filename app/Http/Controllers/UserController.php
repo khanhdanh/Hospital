@@ -6,13 +6,12 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use Hash;
 use Auth;
-use App\Models\Attendance;
 
 class UserController extends Controller
 {
     public function profile(User $user) {
-        $user_attendance = Attendance::where('attendance_id', Auth::id())->get();
-    	return view('admin.user.profile', compact('user', 'user_attendance'));
+
+    	return view('admin.user.profile', compact('user'));
     }
 
     public function update(User $user) {

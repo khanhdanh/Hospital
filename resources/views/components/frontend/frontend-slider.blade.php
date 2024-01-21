@@ -7,7 +7,7 @@
                         <div class="slider_text">
 
                             <h3>
-                            <span>M E D I C A L I F E</span> <br />
+                                <span>M E D I C A L I F E</span> <br />
                             </h3>
                             <p>
                                 In healthcare sector, service excellence is the facility of <br />
@@ -25,8 +25,8 @@
                     <div class="col-xl-12">
                         <div class="slider_text">
                             <h3>
-                            <span>TAKE CARE YOUR <br />
-                            HEALTH</span>
+                                <span>TAKE CARE OF <br />
+                                    YOUR HEALTH</span>
                             </h3>
                             <p>
                                 In healthcare sector, service excellence is the facility of <br />
@@ -44,11 +44,11 @@
                     <div class="col-xl-12">
                         <div class="slider_text">
                             <h3>
-                            <span>LIVE GOOD  <br/>
-                            LIVE HEALTHY</span>
+                                <span>LIVE GOOD <br />
+                                    LIVE HEALTHY</span>
                             </h3>
-                                In healthcare sector, service excellence is the facility of <br />
-                                the hospital as healthcare service provider to consistently.
+                            In healthcare sector, service excellence is the facility of <br />
+                            the hospital as healthcare service provider to consistently.
                             </p>
                             <a href="#" class="boxed-btn3">Check Our Services</a>
                         </div>
