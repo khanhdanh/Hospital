@@ -37,8 +37,6 @@
 							<th>Name</th>
 							<th>Description</th>
 							<th>Status</th>
-							<th>Created At</th>
-							<th>Updated At</th>
 							<th colspan="2" class="text-center">Action</th>
 						</tr>
 					</thead>
@@ -51,8 +49,6 @@
 							<td><a data-toggle="modal" data-target="#modal-{{ $department->id }}" href="">{{ $department->name }}</a></td>
 							<td>{{ Str::words($department->description, 5) }}</td>
 							<td>{{ $department->status }}</td>
-							<td>{{ $department->created_at->diffForHumans() }}</td>
-							<td>{{ $department->updated_at->diffForHumans() }}</td>
 							<td>
 								<button type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#modal-{{ $department->id }}">
 				                  	Edit
@@ -85,7 +81,7 @@
 												                        <label for="desc">Description</label>
 												                        <input type="text" class="form-control" id="desc" value="{{ $department->description }}" name="description" required>
 												                    </div>
-												                    
+
 												                    <div class="form-group">
 												                        <label>Status</label>
 												                        <select class="form-control" name="status" required>
@@ -178,7 +174,7 @@
 				                        <span class="text-danger">{{ $message }}</span>
 				                    @enderror
 				                    </div>
-				                    
+
 				                    <div class="form-group">
 				                        <label>Status</label>
 				                        <select class="form-control" name="status" required>
