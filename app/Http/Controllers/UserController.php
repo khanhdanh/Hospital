@@ -4,20 +4,22 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
-use Hash;
+
+use Illuminate\Support\Facades\Hash;
 use Auth;
-use App\Models\Attendance;
 
 class UserController extends Controller
 {
-    public function profile(User $user) {
-        $user_attendance = Attendance::where('attendance_id', Auth::id())->get();
-    	return view('admin.user.profile', compact('user', 'user_attendance'));
+    public function profile(User $user)
+    {
+
+        return view('admin.user.profile', compact('user'));
     }
 
-    public function update(User $user) {
+    public function update(User $user)
+    {
         $inputs = request()->validate([
-            'name' => ['required','string', 'max:255'],
+            'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255'],
             'phone' => ['required']
         ]);
@@ -39,14 +41,16 @@ class UserController extends Controller
     public function updatePhoto(User $user)
     {
         $inputs = request()->validate([
-            'photo' => 'file',
+            'photo' => 'file'
         ]);
 
         if (request('photo')) {
-            $inputs['photo'] = request('photo')->store('images');
+            $inputs['photo'] = request('photo')->store('image');
         }
 
         $user->update($inputs);
         return back();
+
     }
+
 }

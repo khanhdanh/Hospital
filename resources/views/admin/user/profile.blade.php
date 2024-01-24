@@ -3,39 +3,7 @@
 @section('content')
 <div class="row">
 	<div class="col-md-4">
-		@if(!auth()->user()->userHasRole('super-admin'))
-		<div class="card card-primary">
-			<div class="card-body">
-				<div class="row">
-					<div class="col-md-6">
-						@if(auth()->user()->userHasAttendance(date('Y-m-d')))
-						<button type="submit" class="btn btn-success">Attendance Submitted</button>
-						@else
-						<form action="{{ route('attendance.store') }}" method="post">
-							@csrf
-							<input type="hidden" value="{{ Auth::id() }}" name="attendance_id">
-							<button type="submit" class="btn btn-warning">Submit Attendance</button>
-						</form>
-						@endif
-					</div>
-					<div class="col-md-6"><button class="btn btn-primary" type="button" data-toggle="modal" data-target="#modal-lg">Show Attendance List</button></div>
-				</div>
-			</div>
-			<!-- /.card-body -->
-		</div>
-		@else
-		<div class="card card-primary">
-			<div class="card-body">
-				<div class="row">
-					<div class="col-md-6">
-						<button class="btn btn-primary" type="button" data-toggle="modal" data-target="#modal-lg">Doctor Attendance</button>
-					</div>
-					<div class="col-md-6"><button class="btn btn-primary" type="button" data-toggle="modal" data-target="#modal-lg-staff">Staff Attendance</button></div>
-				</div>
-			</div>
-			<!-- /.card-body -->
-		</div>
-		@endif
+
 		<div class="card card-primary">
 			<div class="card-header">
 				<h3 class="card-title">About Me</h3>
@@ -43,9 +11,10 @@
 
 			<div class="card-body">
 				<div class="text-center mb-4">
-	              	<img class="profile-user-img img-fluid img-circle"
-	                   src="{{ $user->photo }}"
-	                   alt="User profile picture">
+                    <img class="profile-user-img img-fluid img-circle"
+                     src="{{ $user->photo }}"
+                    alt="User profile picture">
+
 	            </div>
 	            <div class="row mb-3">
 	            	<div class="col-md-9">
@@ -71,7 +40,7 @@
 			@foreach($user->roles as $role)
 				<p class="text-muted">{{ $role->name }}</p>
 			@endforeach
-				
+
 			</div>
 			<!-- /.card-body -->
 		</div>
@@ -118,7 +87,7 @@
 								@enderror
 								</div>
 							</div>
-							
+
 							<div class="form-group row">
 								<div class="offset-sm-2 col-sm-10">
 									<button type="submit" class="btn btn-primary">UPDATE PROFILE</button>
@@ -166,7 +135,7 @@
 									<input type="password" class="form-control" id="password_confirmation" name="password_confirmation">
 								</div>
 							</div>
-							
+
 							<div class="form-group row">
 								<div class="offset-sm-2 col-sm-10">
 									<button type="submit" class="btn btn-danger">UPDATE PASSWORD</button>
@@ -180,99 +149,6 @@
 			</div><!-- /.card-body -->
 		</div>
 				<!-- /.card -->
-	</div>
-</div>
-
-<!-- ********	Attendance List Modal	************ -->
-<div class="modal fade" id="modal-lg" style="display: none;" aria-hidden="true">
-	<div class="modal-dialog modal-lg">
-		<div class="modal-content">
-			<div class="modal-header">
-				<h4 class="modal-title">Attendance List</h4>
-				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-				<span aria-hidden="true">×</span>
-				</button>
-			</div>
-			<div class="modal-body">
-				<div class="col-12">
-					<div class="card">
-						<div class="card-body table-responsive p-0">
-							<table class="table table-hover text-nowrap">
-								<thead>
-									<tr>
-										<th>ID</th>
-										<th>Name</th>
-										<th>Attendance Date</th>
-										<th>Created At</th>
-										<th>Updated At</th>
-									</tr>
-								</thead>
-								<tbody>
-
-								@foreach($user_attendance as $attendance)
-									<tr>
-										<td>{{ $attendance->id }}</td>
-										<td>{{ $attendance->user->name }}</td>
-										<td>{{ $attendance->date }}</td>
-										<td>{{ $attendance->created_at->diffForHumans() }}</td>
-										<td>{{ $attendance->updated_at->diffForHumans() }}</td>
-									</tr>
-								@endforeach
-								</tbody>
-							</table>
-						</div>
-						<!-- /.card-body -->
-					</div>
-					<!-- /.card -->
-				</div>			
-			</div>
-		</div>
-	</div>
-</div>
-
-<div class="modal fade" id="modal-lg" style="display: none;" aria-hidden="true">
-	<div class="modal-dialog modal-lg">
-		<div class="modal-content">
-			<div class="modal-header">
-				<h4 class="modal-title">Attendance List</h4>
-				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-				<span aria-hidden="true">×</span>
-				</button>
-			</div>
-			<div class="modal-body">
-				<div class="col-12">
-					<div class="card">
-						<div class="card-body table-responsive p-0">
-							<table class="table table-hover text-nowrap">
-								<thead>
-									<tr>
-										<th>ID</th>
-										<th>Name</th>
-										<th>Attendance Date</th>
-										<th>Created At</th>
-										<th>Updated At</th>
-									</tr>
-								</thead>
-								<tbody>
-
-								@foreach($user_attendance as $attendance)
-									<tr>
-										<td>{{ $attendance->id }}</td>
-										<td>{{ $attendance->user->name }}</td>
-										<td>{{ $attendance->date }}</td>
-										<td>{{ $attendance->created_at->diffForHumans() }}</td>
-										<td>{{ $attendance->updated_at->diffForHumans() }}</td>
-									</tr>
-								@endforeach
-								</tbody>
-							</table>
-						</div>
-						<!-- /.card-body -->
-					</div>
-					<!-- /.card -->
-				</div>			
-			</div>
-		</div>
 	</div>
 </div>
 

@@ -12,7 +12,7 @@ class Staff extends Model
     protected $guarded = [];
 
     public function getPhotoAttribute($value) {
-        return asset('storage/' . $value);
+        return asset('storage/app/' . $value);
     }
 
     public function department()

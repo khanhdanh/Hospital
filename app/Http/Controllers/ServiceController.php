@@ -69,7 +69,7 @@ class ServiceController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Service $service)
+    public function edit(Service $services)
     {
         return view('admin.service.edit', compact('service'));
     }
@@ -90,10 +90,10 @@ class ServiceController extends Controller
             'status' => 'required',
         ]);
 
-        $service->name = $inputs['name'];
-        $service->description = $inputs['description'];
-        $service->service_cost = $inputs['service_cost'];
-        $service->status = $inputs['status'];
+        $services->name = $inputs['name'];
+        $services->description = $inputs['description'];
+        $services->service_cost = $inputs['service_cost'];
+        $services->status = $inputs['status'];
 
         $service->update();
         session()->flash('service-update-message', 'Service Updated Successfully');
@@ -106,15 +106,15 @@ class ServiceController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Service $service)
+    public function destroy(Service $services)
     {
-        $service->delete();
+        $services->delete();
         session()->flash('service-delete-message', 'Record Deleted.......');
         return back();
     }
 
-    public function book(Service $service)
+    public function book(Service $services)
     {
-        return view('frontend.service.book', compact('service'));
+        return view('frontend.service.book', compact('services'));
     }
 }

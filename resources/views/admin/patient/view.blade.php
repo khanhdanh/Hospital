@@ -54,8 +54,6 @@
 								<td>{{ $patient->phone }}</td>
 								<td>{{ $patient->blood_group }}</td>
 								<td>{{ $patient->age }}</td>
-								<td>{{ $patient->created_at->diffForHumans() }}</td>
-								<td>{{ $patient->updated_at->diffForHumans() }}</td>
 								<td>
 									<form action="{{ route('patient.delete', $patient->id) }}" method="post">
 										@csrf
