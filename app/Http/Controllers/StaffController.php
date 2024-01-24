@@ -86,7 +86,7 @@ class StaffController extends Controller
 
 
         if (request()->hasFile('photo')) {
-            $inputs['photo'] = request('photo')->store('images');
+            $inputs['photo'] = request('photo')->store('img');
             $staffMember->photo = $inputs['photo'];
         }
 

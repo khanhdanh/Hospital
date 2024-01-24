@@ -39,7 +39,7 @@ class DepartmentController extends Controller
         ]);
 
         if (request('photo')) {
-            $inputs['photo'] = request('photo')->store('images');
+            $inputs['photo'] = request('photo')->store('img');
             $department->photo = $inputs['photo'];
         }
 

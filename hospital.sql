@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 21, 2024 at 04:48 PM
+-- Generation Time: Jan 24, 2024 at 07:46 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -129,7 +129,7 @@ CREATE TABLE `patients` (
   `gender` varchar(10) DEFAULT NULL,
   `dob` date NOT NULL,
   `email` varchar(50) NOT NULL,
-  `phone` varchar(255) NOT NULL,
+  `phone` int(12) NOT NULL,
   `note` varchar(500) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -138,7 +138,11 @@ CREATE TABLE `patients` (
 --
 
 INSERT INTO `patients` (`id`, `user_id`, `name`, `gender`, `dob`, `email`, `phone`, `note`) VALUES
-(1, 5, 'Liam Mitchell', 'Female', '2000-01-01', '', '09092342363', '');
+(1, 4, 'Liam Mitchell', 'Female', '2000-01-01', '', 2147483647, ''),
+(2, 4, 'Isabella Davis', 'Female', '1975-09-10', '', 2147483647, ''),
+(3, 4, 'Noah Turner', 'Male', '1980-04-15', '', 2147483647, ''),
+(4, 4, 'Lucas Richardson', 'Male', '1985-03-25', '', 1284329586, ''),
+(5, 4, 'Jackson Hayes', 'Male', '1994-05-30', '', 1849328241, '');
 
 -- --------------------------------------------------------
 
@@ -161,7 +165,8 @@ CREATE TABLE `roles` (
 INSERT INTO `roles` (`id`, `name`, `slug`, `created_at`, `updated_at`) VALUES
 (1, 'Super admin', 'super-admin', '2021-10-26 09:44:59', NULL),
 (2, 'Doctor', 'doctor', '2023-12-20 04:15:12', '2024-01-24 13:17:42'),
-(3, 'Staff', 'nurse', NULL, NULL);
+(3, 'Staff', 'nurse', NULL, NULL),
+(4, 'Patient', 'patient', '2022-01-17 06:42:06', '2022-01-17 06:42:06');
 
 -- --------------------------------------------------------
 
@@ -192,7 +197,7 @@ INSERT INTO `role_user` (`role_id`, `user_id`, `created_at`, `updated_at`) VALUE
 --
 
 CREATE TABLE `services` (
-  `id` bigint(20) UNSIGNED NOT NULL,
+  `id` int(20) NOT NULL,
   `name` varchar(255) NOT NULL,
   `description` text NOT NULL,
   `service_cost` int(11) NOT NULL,
@@ -204,9 +209,9 @@ CREATE TABLE `services` (
 --
 
 INSERT INTO `services` (`id`, `name`, `description`, `service_cost`, `status`) VALUES
-(0, 'Pre-participation Physical Evaluation', 'Before participation in any sport, it is recommended that any professional or amateur athlete undergo a pre-participation physical evaluation (PPE). PPE helps in detecting serious conditions and provides strategies to prevent injuries. PPE should occur around 6 weeks before activity to allow for further evaluation or treatment if needed.', 200, 'Active'),
 (1, 'Health Check-up Programmes', 'Designed to thoroughly assess your overall health, we offer 3 comprehensive check-up programmes.\r\nApproximate time to complete programme: Standard Programme(3 – 4 hours), Extensive Programme (3 – 4 hours), Executive Programme(4 – 6 hours)', 500, 'Active'),
-(2, 'Health Screening Programmes', 'Population screening explained -\r\nScreening is the process of identifying apparently healthy people who may have an increased chance of a disease or condition. The screening provider then offers information, further tests and treatment.', 400, 'Active');
+(2, 'Health Screening Programmes', 'Population screening explained -\r\nScreening is the process of identifying apparently healthy people who may have an increased chance of a disease or condition. The screening provider then offers information, further tests and treatment.', 400, 'Active'),
+(3, 'Pre-participation Physical Evaluation', 'Before participation in any sport, it is recommended that any professional or amateur athlete undergo a pre-participation physical evaluation (PPE). PPE helps in detecting serious conditions and provides strategies to prevent injuries. PPE should occur around 6 weeks before activity to allow for further evaluation or treatment if needed.', 200, 'Active');
 
 -- --------------------------------------------------------
 
@@ -218,12 +223,23 @@ CREATE TABLE `staffs` (
   `id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
   `name` varchar(50) NOT NULL,
-  `gender` int(11) NOT NULL,
+  `gender` varchar(10) NOT NULL DEFAULT 'Female',
   `phone` int(11) NOT NULL,
   `email` varchar(30) NOT NULL,
   `dob` date NOT NULL,
   `description` varchar(500) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `staffs`
+--
+
+INSERT INTO `staffs` (`id`, `user_id`, `name`, `gender`, `phone`, `email`, `dob`, `description`) VALUES
+(1, 3, 'Sophia Brown', 'Female', 623859124, 'sophiabrown@gmail.com', '1999-05-05', NULL),
+(2, 3, 'Emma Johnson', 'Female', 544316879, 'emmajohnson@gmail.com', '1995-03-09', NULL),
+(3, 3, 'Amelia Taylor', 'Female', 325443661, 'ameliataylor@gmail.com', '1993-07-07', NULL),
+(4, 3, 'Evelyn White', 'Female', 849673124, 'evelunwhite@gmail.com', '2001-11-20', NULL),
+(5, 3, 'Ava Williams', 'Female', 978324683, 'avawilliams@gmail.com', '2003-08-24', NULL);
 
 -- --------------------------------------------------------
 
@@ -234,7 +250,7 @@ CREATE TABLE `staffs` (
 CREATE TABLE `users` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `name` varchar(255) NOT NULL,
-  `photo` text NOT NULL DEFAULT 'images/default-user-photo.jpg',
+  `photo` varchar(100) NOT NULL,
   `email` varchar(255) NOT NULL,
   `phone` int(11) NOT NULL,
   `status` int(11) NOT NULL DEFAULT 1,
@@ -251,7 +267,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `photo`, `email`, `phone`, `status`, `email_verified_at`, `password`, `slug`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'Super Admin', '', 'superadmin@gmail.com', 198756545, 1, NULL, '$2y$10$kepYDm9cuMCsR6xKR.vOXeDZ9zFjArsPmseEAvw/o1Uy1ErF.SxTW', NULL, NULL, '2021-10-21 08:20:50', '2021-10-21 08:20:50'),
+(1, 'Super Admin', 'images/OoNTOCmWjhYr4EZ8yECoU9W4mzTbEaAKSW0eGiuG.jpg', 'superadmin@gmail.com', 198756545, 1, NULL, '$2y$10$kepYDm9cuMCsR6xKR.vOXeDZ9zFjArsPmseEAvw/o1Uy1ErF.SxTW', NULL, NULL, '2021-10-21 08:20:50', '2024-01-21 21:25:06'),
 (2, 'Khoa Nguyen', '', 'anhkhoanguyen366@gmail.com', 966164566, 1, NULL, '$2y$10$kepYDm9cuMCsR6xKR.vOXeDZ9zFjArsPmseEAvw/o1Uy1ErF.SxTW', NULL, NULL, '2024-01-21 04:22:05', '2024-01-21 04:22:05');
 
 -- --------------------------------------------------------
@@ -278,7 +294,8 @@ CREATE TABLE `user_roles` (
 INSERT INTO `user_roles` (`id`, `name`, `serial`, `creator`, `slug`, `status`, `created_at`, `updated_at`) VALUES
 (1, 'Super Admin', 1, NULL, 'super-admin', NULL, '2021-09-30 03:51:09', '2021-09-30 03:51:09'),
 (2, 'Doctor', 2, NULL, 'doctor', NULL, '2021-09-30 03:51:09', '2021-09-30 03:51:09'),
-(3, 'Staff', 3, NULL, 'nurse', NULL, '2021-09-30 03:51:09', '2021-09-30 03:51:09');
+(3, 'Staff', 3, NULL, 'nurse', NULL, '2021-09-30 03:51:09', '2021-09-30 03:51:09'),
+(4, 'Patient', 4, NULL, 'patient', NULL, '2021-09-30 03:51:09', '2021-09-30 03:51:09');
 
 --
 -- Indexes for dumped tables
@@ -374,19 +391,19 @@ ALTER TABLE `message_doctors`
 -- AUTO_INCREMENT for table `patients`
 --
 ALTER TABLE `patients`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `services`
 --
 ALTER TABLE `services`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `staffs`
 --
 ALTER TABLE `staffs`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `users`

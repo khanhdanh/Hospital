@@ -83,7 +83,7 @@ class DoctorController extends Controller
         $doctor->status = $inputs['status'];
 
         if (request()->hasFile('photo')) {
-            $inputs['photo'] = request('photo')->store('images');
+            $inputs['photo'] = request('photo')->store('img');
             $doctor->photo = $inputs['photo'];
         }
 

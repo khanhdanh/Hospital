@@ -16,6 +16,7 @@ class UserController extends Controller
 
     public function update(User $user) {
         $inputs = request()->validate([
+            'id' => ['required'],
             'name' => ['required','string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255'],
             'phone' => ['required']
@@ -42,7 +43,7 @@ class UserController extends Controller
         ]);
 
         if (request('photo')) {
-            $inputs['photo'] = request('photo')->store('images');
+            $inputs['photo'] = request('photo')->store('img');
         }
 
         $user->update($inputs);
