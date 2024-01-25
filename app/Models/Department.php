@@ -11,8 +11,6 @@ class Department extends Model
 
     protected $guarded = [];
 
-    // protected $fillable = ['name', 'description', 'status', 'image'];
-
     public function getPhotoAttribute($value) {
         return asset('storage/app/'. $value);
     }

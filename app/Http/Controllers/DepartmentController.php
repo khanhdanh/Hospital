@@ -21,10 +21,6 @@ class DepartmentController extends Controller
             'status' => 'required',
         ]);
 
-        if (request('photo')) {
-            $inputs['photo'] = request('photo')->store('images');
-        }
-
         Department::create($inputs);
         session()->flash('department-create-message', 'Department created successfully.....');
         return redirect()->route('department.view');
@@ -37,11 +33,6 @@ class DepartmentController extends Controller
             'description' => 'required',
             'status' => 'required',
         ]);
-
-        if (request('photo')) {
-            $inputs['photo'] = request('photo')->store('images');
-            $department->photo = $inputs['photo'];
-        }
 
         $department->name = $inputs['name'];
         $department->description = $inputs['description'];

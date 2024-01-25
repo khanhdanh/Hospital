@@ -33,11 +33,10 @@
                             <thead>
                                 <tr>
                                     <th>ID</th>
-                                    <th>Photo</th>
                                     <th>Name</th>
                                     <th>Description</th>
                                     <th>Service Cost</th>
-                                    <th>Service Availability</th>
+                                    <th>Status</th>
                                     <th colspan="2" class="text-center">Action</th>
                                 </tr>
                             </thead>
@@ -46,12 +45,10 @@
                                     @foreach ($services as $service)
                                         <tr>
                                             <td>{{ $service->id }}</td>
-                                            <td><img src="{{ $service->photo }}" alt="service-photo" height="60"></td>
-                                            <td><a data-toggle="modal" data-target="#modal-{{ $service->id }}"
-                                                    href="">{{ $service->name }}</a></td>
-                                            <td>{{ $service->description }}</td>
+                                            <td>{{ $service->name }}</a></td>
+                                            <td>{{ Str::words($service->description, 10) }}</td>
                                             <td>{{ $service->service_cost }}</td>
-                                            <td>{{ $service->service_availability }}</td>
+                                            <td>{{ $service->status }}</td>
                                             <td>
                                                 <button type="button" class="btn btn-sm btn-primary" data-toggle="modal"
                                                     data-target="#modal-{{ $service->id }}">
@@ -90,10 +87,10 @@
                                                                                     </div>
                                                                                     <div class="form-group">
                                                                                         <label
-                                                                                            for="description">Description</label>
+                                                                                            for="desc">Description</label>
                                                                                         <input type="text"
                                                                                             class="form-control"
-                                                                                            id="description"
+                                                                                            id="desc"
                                                                                             value="{{ $service->description }}"
                                                                                             name="description" required>
                                                                                     </div>
@@ -107,27 +104,16 @@
                                                                                             name="service_cost" required>
                                                                                     </div>
                                                                                     <div class="form-group">
-                                                                                        <label>Service Availability</label>
+                                                                                        <label>Status</label>
                                                                                         <select class="form-control"
-                                                                                            name="service_availability"
-                                                                                            required>
+                                                                                            name="status" required>
                                                                                             <option value="1"
-                                                                                                @if ($service->service_availability == 1) selected @endif>
-                                                                                                Available
-                                                                                            </option>
+                                                                                                @if ($service->status == 1) selected @endif>
+                                                                                                Active</option>
                                                                                             <option value="0"
-                                                                                                @if ($service->service_availability == 0) selected @endif>
-                                                                                                Not Available</option>
+                                                                                                @if ($service->status == 0) selected @endif>
+                                                                                                Inactive</option>
                                                                                         </select>
-                                                                                    </div>
-                                                                                    <div><img src="{{ $service->photo }}"
-                                                                                            alt="service-photo"
-                                                                                            height="80"></div>
-                                                                                    <div class="form-group">
-                                                                                        <label for="photo">Photo</label>
-                                                                                        <input type="file"
-                                                                                            class="form-control-file"
-                                                                                            id="photo" name="photo">
                                                                                     </div>
                                                                                 </div>
                                                                                 <!-- /.card-body -->
@@ -198,7 +184,7 @@
                                                 @enderror
                                             </div>
                                             <div class="form-group">
-                                                <label for="description">Description</label>
+                                                <label for="desc">Description</label>
                                                 <input type="text" class="form-control" id="description"
                                                     placeholder="Service Description ....." name="description" required>
                                                 @error('description')
@@ -215,19 +201,11 @@
                                             </div>
                                             <div class="form-group">
                                                 <label>Status</label>
-                                                <select class="form-control" name="service_cost" required>
+                                                <select class="form-control" name="status" required>
                                                     <option value="1">Active</option>
                                                     <option value="0">Inactive</option>
                                                 </select>
                                                 @error('status')
-                                                    <span class="text-danger">{{ $message }}</span>
-                                                @enderror
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="photo">Photo</label>
-                                                <input type="file" class="form-control-file" id="photo"
-                                                    name="photo">
-                                                @error('photo')
                                                     <span class="text-danger">{{ $message }}</span>
                                                 @enderror
                                             </div>

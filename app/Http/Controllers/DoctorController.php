@@ -7,7 +7,7 @@ use App\Models\Doctor;
 use App\Models\Department;
 use App\Models\Role;
 use App\Models\User;
-use Str;
+use Illuminate\Support\Facades\Str;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 
@@ -38,7 +38,7 @@ class DoctorController extends Controller
         $docUser->email = request('email');
         $docUser->phone = request('phone');
         $docUser->password = Hash::make(request('password'));
-        $docUser->slug = Str::slug(request('name'));
+
         $docUser->save();
 
         $doctor = new Doctor();
@@ -49,8 +49,7 @@ class DoctorController extends Controller
         $doctor->phone = request('phone');
         $doctor->speciality = request('speciality');
         $doctor->gender = request('gender');
-        $doctor->slug = Str::slug(request('name'));
-        $doctor->status = 1;
+
 
         if (request('photo')) {
             $doctor->photo = request('photo')->store('images');

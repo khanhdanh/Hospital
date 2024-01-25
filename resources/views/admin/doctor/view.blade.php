@@ -22,7 +22,7 @@
                 </button>
             </div>
 
-            <div class="col-12">
+            <div class="col-12 ">
                 <div class="card">
                     <div class="card-header">
                         <h3 class="card-title">Doctor List</h3>
@@ -38,6 +38,7 @@
                                     <th>Email</th>
                                     <th>Phone</th>
                                     <th>Speciality</th>
+                                    <th>Gender</th>
                                     <th colspan="2" class="text-center">Action</th>
                                 </tr>
                             </thead>
@@ -54,7 +55,7 @@
                                             <td>{{ $doctor->email }}</td>
                                             <td>{{ $doctor->phone }}</td>
                                             <td>{{ $doctor->speciality }}</td>
-
+                                            <td>{{ $doctor->gender }}</td>
                                             <td>
                                                 <button type="button" class="btn btn-sm btn-primary" data-toggle="modal"
                                                     data-target="#modal-{{ $doctor->id }}">
@@ -69,7 +70,7 @@
                                                                 <h4 class="modal-title">Edit Doctor</h4>
                                                                 <button type="button" class="close" data-dismiss="modal"
                                                                     aria-label="Close">
-                                                                    <span aria-hidden="true">×</span>
+                                                                    <span aria-hidden="true"></span>
                                                                 </button>
                                                             </div>
                                                             <div class="modal-body">
@@ -181,7 +182,7 @@
                     <div class="modal-header">
                         <h4 class="modal-title">Create Doctor</h4>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">×</span>
+                            <span aria-hidden="true"></span>
                         </button>
                     </div>
                     <div class="modal-body">

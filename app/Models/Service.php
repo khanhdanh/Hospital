@@ -11,14 +11,6 @@ class Service extends Model
 
     protected $guarded = [];
 
-    public function getServiceAvailabilityAttribute($value) {
-        if ($value == 1) {
-            return "Available";
-        } else if ($value == 0) {
-            return "Not Available";
-        }
-    }
-
     public function getPhotoAttribute($value) {
         return asset('storage/app/'. $value);
     }

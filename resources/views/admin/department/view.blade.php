@@ -33,7 +33,6 @@
                             <thead>
                                 <tr>
                                     <th>ID</th>
-                                    <th>photo</th>
                                     <th>Name</th>
                                     <th>Description</th>
                                     <th>Status</th>
@@ -45,11 +44,8 @@
                                     @foreach ($departments as $department)
                                         <tr>
                                             <td>{{ $department->id }}</td>
-                                            <td><img src="{{ $department->photo }}" alt="department-photo" height="60">
-                                            </td>
-                                            <td><a data-toggle="modal" data-target="#modal-{{ $department->id }}"
-                                                    href="">{{ $department->name }}</a></td>
-                                            <td>{{ Str::words($department->description, 5) }}</td>
+                                            <td>{{ $department->name }}</a></td>
+                                            <td>{{ Str::words($department->description, 10) }}</td>
                                             <td>{{ $department->status }}</td>
                                             <td>
                                                 <button type="button" class="btn btn-sm btn-primary" data-toggle="modal"
@@ -71,8 +67,6 @@
                                                                 <div class="row">
                                                                     <div class="col-12">
                                                                         <div class="card card-primary">
-                                                                            <!-- /.card-header -->
-                                                                            <!-- form start -->
                                                                             <form method="post"
                                                                                 action="{{ route('department.update', $department->id) }}"
                                                                                 enctype="multipart/form-data"
@@ -112,17 +106,7 @@
                                                                                                 Deactive</option>
                                                                                         </select>
                                                                                     </div>
-                                                                                    <div>
-                                                                                        <img src="{{ $department->photo }}"
-                                                                                            alt="department-photo"
-                                                                                            height="80">
-                                                                                    </div>
-                                                                                    <div class="form-group">
-                                                                                        <label for="photo">Photo</label>
-                                                                                        <input type="file"
-                                                                                            class="form-control-file"
-                                                                                            id="photo" name="photo">
-                                                                                    </div>
+
                                                                                 </div>
                                                                                 <!-- /.card-body -->
                                                                                 <div class="card-footer">
@@ -212,23 +196,13 @@
                                                 <label>Status</label>
                                                 <select class="form-control" name="status" required>
                                                     <option value="1">Active</option>
-                                                    <option value="0">Deactive</option>
+                                                    <option value="0">Inactive</option>
                                                 </select>
-                                                <div class="invalid-feedback">
-                                                    Status is required
-                                                </div>
                                                 @error('status')
                                                     <span class="text-danger">{{ $message }}</span>
                                                 @enderror
                                             </div>
-                                            <div class="form-group">
-                                                <label for="photo">Photo</label>
-                                                <input type="file" class="form-control-file" id="photo"
-                                                    name="photo">
-                                                @error('photo')
-                                                    <span class="text-danger">{{ $message }}</span>
-                                                @enderror
-                                            </div>
+
                                         </div>
                                         <!-- /.card-body -->
                                         <div class="card-footer">
@@ -245,8 +219,6 @@
             <!-- /.modal-dialog -->
         </div>
     @endsection
-
-
     @section('script')
         <script>
             (function() {
