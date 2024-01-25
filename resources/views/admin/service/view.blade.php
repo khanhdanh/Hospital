@@ -177,7 +177,7 @@
                     <div class="modal-header">
                         <h4 class="modal-title">Create Services</h4>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">×</span>
+                            <span aria-hidden="true"></span>
                         </button>
                     </div>
                     <div class="modal-body">
@@ -214,12 +214,12 @@
                                                 @enderror
                                             </div>
                                             <div class="form-group">
-                                                <label>Service Availability</label>
-                                                <select class="form-control" name="service_availability" required>
-                                                    <option value="1">Available</option>
-                                                    <option value="0">Not Available</option>
+                                                <label>Status</label>
+                                                <select class="form-control" name="service_cost" required>
+                                                    <option value="1">Active</option>
+                                                    <option value="0">Inactive</option>
                                                 </select>
-                                                @error('service_availability')
+                                                @error('status')
                                                     <span class="text-danger">{{ $message }}</span>
                                                 @enderror
                                             </div>
