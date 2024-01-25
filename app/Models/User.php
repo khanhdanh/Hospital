@@ -48,7 +48,7 @@ class User extends Authenticatable
     ];
 
     public function getPhotoAttribute($value) {
-        return asset('storage/'. $value);
+        return asset('storage/app/'. $value);
     }
 
     public function roles()
@@ -67,21 +67,6 @@ class User extends Authenticatable
 
     public function doctor() {
         return $this->hasOne(Doctor::class);
-    }
-
-    public function messages()
-    {
-        return $this->hasMany(MessageDoctor::class);
-    }
-
-    public function attendances()
-    {
-        return $this->hasMany(Attendance::class, 'attendance_id', 'id');
-    }
-
-    public function attendanceSchedule()
-    {
-        return $this->belongsTo(AttendanceSchedule::class);
     }
 
     public function userHasAttendance($date)

@@ -53,7 +53,7 @@ class DoctorController extends Controller
         $doctor->status = 1;
 
         if (request('photo')) {
-            $doctor->photo = request('photo')->store('images');
+            $doctor->photo = request('photo')->store('img');
         }
         $doctor->save();
         $docUser->roles()->attach(Role::find(2));

@@ -13,23 +13,26 @@
                                 <label for="patient-name">Name</label>
                                 <input type="text" class="form-control" id="patient-name" placeholder="Name" name="name">
                             </div>
+
                             <div class="form-group">
-                                <label for="phone-no">Phone</label>
-                                <input type="number" class="form-control" id="phone-no" placeholder="Contact No" name="phone">
-                            </div>
-                            <div class="form-group">
-                                <label>Blood Group</label>
-                                <select class="form-control" name="blood_group">
-                                    <option value="A+">A+</option>
-                                    <option value="B+">B+</option>
-                                    <option value="A-">A-</option>
-                                    <option value="AB+">AB+</option>
-                                    <option value="AB-">AB-</option>
+                                <label>Gender</label>
+                                <select class="form-control" name="gender_group">
+                                    <option value="male">Male</option>
+                                    <option value="female">Female</option>
+                                    <option value="other">Other</option>
                                 </select>
                             </div>
                             <div class="form-group">
-                                <label for="age">Age</label>
-                                <input type="number" class="form-control" id="age" name="age">
+                                <label for="birthday">Birthday</label> <br>
+                                <input type="date" id="dob" name="dob">
+                            </div>
+                            <div class="form-group">
+                                <label for="age">Email</label>
+                                <input type="text" class="form-control" id="email" name="email">
+                            </div>
+                            <div class="form-group">
+                                <label for="phone-no">Phone</label>
+                                <input type="number" class="form-control" id="phone-no" placeholder="Contact No" name="phone">
                             </div>
                         </div>
                         <!-- /.card-body -->

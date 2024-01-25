@@ -20,30 +20,29 @@
                         <span class="text-danger">{{ $message }}</span>
                     @enderror
                     </div>
+
+                    <div class="form-group">
+                        <label>Gender</label>
+                        <select class="form-control" name="gender_group">
+                            <option value="female">Female</option>
+                            <option value="male">Male</option>
+                            <option value="A-">Other</option>
+                        </select>
+                    @error('gender_group')
+                        <span class="text-danger">{{ $message }}</span>
+                    @enderror
+                    </div>
+                    <div class="form-group">
+                        <label for="age">Birthday</label>
+                        <input type="date" class="form-control" id="dob" name="dob">
+                    @error('age')
+                        <span class="text-danger">{{ $message }}</span>
+                    @enderror
+                    </div>
                     <div class="form-group">
                         <label for="phone-no">Phone</label>
                         <input type="number" class="form-control" id="phone-no" placeholder="Contact No" name="phone">
                     @error('phone')
-                        <span class="text-danger">{{ $message }}</span>
-                    @enderror
-                    </div>
-                    <div class="form-group">
-                        <label>Blood Group</label>
-                        <select class="form-control" name="blood_group">
-                            <option value="A+">A+</option>
-                            <option value="B+">B+</option>
-                            <option value="A-">A-</option>
-                            <option value="AB+">AB+</option>
-                            <option value="AB-">AB-</option>
-                        </select>
-                    @error('blood_group')
-                        <span class="text-danger">{{ $message }}</span>
-                    @enderror
-                    </div>
-                    <div class="form-group">
-                        <label for="age">Age</label>
-                        <input type="number" class="form-control" id="age" name="age">
-                    @error('age')
                         <span class="text-danger">{{ $message }}</span>
                     @enderror
                     </div>

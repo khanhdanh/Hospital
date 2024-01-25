@@ -104,9 +104,7 @@ Route::get('search/doctor', 'SearchController@searchDoctor')->name('search.docto
 Route::get('search/department', 'SearchController@searchDepartment')->name('search.department');
 
 // Staff route
-Route::get('/staff/view', 'PatientController@index')->name('staff.view');
-
-
+Route::get('app/Http/Controllers/StaffController.php', [StaffController::class, 'list'])->name('staff.list');
 
 
 

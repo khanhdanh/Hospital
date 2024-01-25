@@ -12,17 +12,12 @@ class Doctor extends Model
     protected $guarded = [];
 
     public function getPhotoAttribute($value) {
-        return asset('storage/' . $value);
+        return asset('storage/app/' . $value);
     }
 
     public function department()
     {
         return $this->belongsTo(Department::class);
-    }
-
-    public function schedules()
-    {
-        return $this->hasMany(Schedule::class);
     }
 
     public function user()

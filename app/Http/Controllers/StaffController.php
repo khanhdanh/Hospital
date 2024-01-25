@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Staff;
-use App\Models\Department;
 use App\Models\Role;
 use App\Models\User;
 use Str;
@@ -15,9 +14,8 @@ class StaffController extends Controller
 {
 
     public function index() {
-        $staffMembers = Staff::all();
-        $departments = Department::all();
-    	return view('admin.staff.view', compact('staffMembers', 'departments'));
+        $staffs = Staff::all();
+    	return view('admin.staff.view', compact('staffs'));
     }
 
     public function store(Request $request) {
@@ -25,9 +23,9 @@ class StaffController extends Controller
         request()->validate([
             'name'=> 'required|string',
             'gender' => 'required|in:male,female,other',
-            'email'=> 'required|email|string',
+            'dob' => 'required|date_format:Y-m-d',
             'phone'=> 'required',
-            'dob' => 'required|date_format:D-m-y',
+            'email'=> 'required|email|string',
             'description' => 'nullable',
             'password' => 'required|string|min:4|confirmed',
         ]);
@@ -35,29 +33,24 @@ class StaffController extends Controller
         $staffUser = new User();
         $staffUser->name = request('name');
         $staffUser->gender = request('gender');
-        $staffUser->email = request('email');
-        $staffUser->phone = request('phone');
         $staffUser->dob = request('dob');
+        $staffUser->phone = request('phone');
+        $staffUser->email = request('email');
         $staffUser->password = Hash::make(request('password'));
-        $staff->slug = Str::slug(request('name'));
+        $staffUser->slug = Str::slug(request('name'));
         $staffUser->save();
 
-        $staffMember = new Staff();
-        $staffMember->user_id = $staffUser->id;
-        $staffMember->name = request('name');
-        $staffMember->email = request('email');
-        $staffMember->phone = request('phone');
-        $staffMember->dob = request('dob');
-        $staffMember->gender = request('gender');
+        $staff = new Staff();
+        $staff->user_id = $staffUser->id;
+        $staff->name = request('name');
+        $staff->gender = request('gender');
+        $staff->dob = request('dob');
+        $staff->phone = request('phone');
+        $staff->email = request('email');
         $staff->slug = Str::slug(request('name'));
-        $staffMember->description = null;
+        $staff->description = null;
 
-
-
-        if (request('photo')) {
-            $staffMember->photo = request('photo')->store('images');
-        }
-        $staffMember->save();
+        $staff->save();
         $staffUser->roles()->attach(Role::find(3)); // Giả sử role_id cho "Staff" là 3
         session()->flash('staff-create-message', 'Staff created successfully.....');
         return back()->withErrors(['Error' => 'An error occurred while creating the staff member.']);
@@ -69,34 +62,26 @@ class StaffController extends Controller
             'user_id' => 'required',
             'name'=> 'required',
             'gender' => 'required',
-            'email'=> 'required',
-            'phone'=> 'required',
             'dob' => 'required',
-            'photo' => 'file',
+            'phone'=> 'required',
+            'email'=> 'required',
             'description' => 'nullable'
         ]);
 
-        $staffMember->name = $inputs['name'];
-        $staffMember->gender = $inputs['gender'];
-        $staffMember->email = $inputs['email'];
-        $staffMember->phone = $inputs['phone'];
-        $staffMember->dob = $inputs['dob'];
-        $staffMember->description = $inputs['description'];
-
-
-
-        if (request()->hasFile('photo')) {
-            $inputs['photo'] = request('photo')->store('img');
-            $staffMember->photo = $inputs['photo'];
-        }
+        $staff->name = $inputs['name'];
+        $staff->gender = $inputs['gender'];
+        $staff->dob = $inputs['dob'];
+        $staff->phone = $inputs['phone'];
+        $staff->email = $inputs['email'];
+        $staff->description = $inputs['description'];
 
         $staffMember->update();
         session()->flash('staff-update-message', 'Staff member updated successfully.....');
         return redirect()->route('staff.view');
     }
 
-    public function delete(Staff $staffMember) {
-        $staffMember->delete();
+    public function delete(Staff $staff) {
+        $staff->delete();
         session()->flash('staff-delete-message', 'Staff member deleted successfully.....');
         return back();
     }

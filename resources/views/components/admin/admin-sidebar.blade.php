@@ -40,6 +40,8 @@
 
                     <x-admin.sidebar_link.admin-sidebar-doctor-link></x-admin.sidebar_link.admin-sidebar-doctor-link>
 
+                    <x-admin.sidebar_link.admin-sidebar-staff-link></x-admin.sidebar_link.admin-sidebar-staff-link>
+
                     <x-admin.sidebar_link.admin-sidebar-service-link></x-admin.sidebar_link.admin-sidebar-service-link>
                 @endif
 
@@ -49,6 +51,10 @@
                 @endif
 
                 @if (auth()->user()->userHasRole('doctor'))
+                    <x-admin.sidebar_link.admin-sidebar-appointment-link></x-admin.sidebar_link.admin-sidebar-appointment-link>
+                @endif
+
+                @if (auth()->user()->userHasRole('staff'))
                     <x-admin.sidebar_link.admin-sidebar-appointment-link></x-admin.sidebar_link.admin-sidebar-appointment-link>
                 @endif
 

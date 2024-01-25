@@ -81,21 +81,21 @@ class ServiceController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Service $service)
+    public function update(Service $services)
     {
         $inputs = request()->validate([
             'name' => 'required',
             'description' => 'required',
             'service_cost' => 'required',
-            'status' => 'required',
+            'service_availability' => 'required',
         ]);
 
         $services->name = $inputs['name'];
         $services->description = $inputs['description'];
         $services->service_cost = $inputs['service_cost'];
-        $services->status = $inputs['status'];
+        $services->service_availability = $inputs['service_availability'];
 
-        $service->update();
+        $services->update();
         session()->flash('service-update-message', 'Service Updated Successfully');
         return redirect()->route('service.index');
     }

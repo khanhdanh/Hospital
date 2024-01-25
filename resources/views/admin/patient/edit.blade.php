@@ -18,23 +18,22 @@
                         <label for="patient-name">Name</label>
                         <input type="text" class="form-control" id="patient-name" value="{{ $patient->name }}" name="name">
                     </div>
+
                     <div class="form-group">
-                        <label for="phone-no">Phone</label>
-                        <input type="number" class="form-control" id="phone-no" value="{{ $patient->phone }}" name="phone">
-                    </div>
-                    <div class="form-group">
-                        <label>Blood Group</label>
-                        <select class="form-control" name="blood_group">
-                            <option value="A+" @if($patient->blood_group == 'A+') selected @endif>A+</option>
-                            <option value="B+" @if($patient->blood_group == 'B+') selected @endif>B+</option>
-                            <option value="A-" @if($patient->blood_group == 'A-') selected @endif>A-</option>
-                            <option value="AB+" @if($patient->blood_group == 'AB+') selected @endif>AB+</option>
-                            <option value="AB-" @if($patient->blood_group == 'AB-') selected @endif>AB-</option>
+                        <label>Gender</label>
+                        <select class="form-control" name="gender_group">
+                            <option value="female" @if($patient->gender == 'Female') selected @endif>Female</option>
+                            <option value="male" @if($patient->gender == 'Male') selected @endif>Male</option>
+                            <option value="other" @if($patient->gender == 'Other') selected @endif>Other</option>
                         </select>
                     </div>
                     <div class="form-group">
-                        <label for="age">Age</label>
-                        <input type="number" class="form-control" id="age" name="age" value="{{ $patient->age }}">
+                        <label for="age">Birthday</label>
+                        <input type="date" class="form-control" id="dob" name="dob" value="{{ $patient->dob }}">
+                    </div>
+                    <div class="form-group">
+                        <label for="phone-no">Phone</label>
+                        <input type="number" class="form-control" id="phone-no" value="{{ $patient->phone }}" name="phone">
                     </div>
                 </div>
                 <!-- /.card-body -->

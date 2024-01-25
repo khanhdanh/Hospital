@@ -33,12 +33,9 @@
 					<thead>
 						<tr>
 							<th>ID</th>
-							<th>photo</th>
 							<th>Name</th>
 							<th>Description</th>
 							<th>Status</th>
-							<th>Created At</th>
-							<th>Updated At</th>
 							<th colspan="2" class="text-center">Action</th>
 						</tr>
 					</thead>
@@ -47,12 +44,10 @@
 						@foreach( $departments as $department )
 						<tr>
 							<td>{{ $department->id }}</td>
-							<td><img src="{{ $department->photo }}" alt="department-photo" height="60"></td>
-							<td><a data-toggle="modal" data-target="#modal-{{ $department->id }}" href="">{{ $department->name }}</a></td>
+                            <td><a data-toggle="modal" data-target="#modal-{{ $department->id }}" href="">{{ $department->name }}</a></td>
 							<td>{{ Str::words($department->description, 5) }}</td>
 							<td>{{ $department->status }}</td>
-							<td>{{ $department->created_at->diffForHumans() }}</td>
-							<td>{{ $department->updated_at->diffForHumans() }}</td>
+
 							<td>
 								<button type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#modal-{{ $department->id }}">
 				                  	Edit
@@ -85,7 +80,7 @@
 												                        <label for="desc">Description</label>
 												                        <input type="text" class="form-control" id="desc" value="{{ $department->description }}" name="description" required>
 												                    </div>
-												                    
+
 												                    <div class="form-group">
 												                        <label>Status</label>
 												                        <select class="form-control" name="status" required>
@@ -93,13 +88,7 @@
 												                            <option value="0" @if($department->status == 0) selected @endif>Deactive</option>
 												                        </select>
 												                    </div>
-												                    <div>
-												                        <img src="{{ $department->photo }}" alt="department-photo" height="80">
-												                    </div>
-												                    <div class="form-group">
-												                        <label for="photo">Photo</label>
-												                        <input type="file" class="form-control-file" id="photo" name="photo">
-												                    </div>
+
 												                </div>
 												                <!-- /.card-body -->
 												                <div class="card-footer">
@@ -178,7 +167,7 @@
 				                        <span class="text-danger">{{ $message }}</span>
 				                    @enderror
 				                    </div>
-				                    
+
 				                    <div class="form-group">
 				                        <label>Status</label>
 				                        <select class="form-control" name="status" required>
@@ -189,13 +178,6 @@
 								          	Status is required
 								        </div>
 				                    @error('status')
-				                        <span class="text-danger">{{ $message }}</span>
-				                    @enderror
-				                    </div>
-				                    <div class="form-group">
-				                        <label for="photo">Photo</label>
-				                        <input type="file" class="form-control-file" id="photo" name="photo">
-				                    @error('photo')
 				                        <span class="text-danger">{{ $message }}</span>
 				                    @enderror
 				                    </div>

@@ -38,11 +38,11 @@
 						<tr>
 							<th>ID</th>
 							<th>Name</th>
+							<th>Gender</th>
+							<th>DoB</th>
+							<th>Email</th>
 							<th>Phone</th>
-							<th>Blood Group</th>
-							<th>Age</th>
-							<th>Created At</th>
-							<th>Updated At</th>
+							<th>Note</th>
 							<th>Action</th>
 						</tr>
 					</thead>
@@ -51,11 +51,11 @@
 							<tr>
 								<td>{{ $patient->id }}</td>
 								<td><a href="{{ route('patient.edit', $patient->id) }}">{{ $patient->name }}</a></td>
-								<td>{{ $patient->phone }}</td>
-								<td>{{ $patient->blood_group }}</td>
-								<td>{{ $patient->age }}</td>
-								<td>{{ $patient->created_at->diffForHumans() }}</td>
-								<td>{{ $patient->updated_at->diffForHumans() }}</td>
+								<td>{{ $patient->gender }}</td>
+								<td>{{ $patient->dob }}</td>
+								<td>{{ $patient->email }}</td>
+                                <td>{{ $patient->phone }}</td>
+                                <td>{{ $patient->note }}</td>
 								<td>
 									<form action="{{ route('patient.delete', $patient->id) }}" method="post">
 										@csrf

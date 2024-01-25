@@ -1,5 +1,5 @@
 <x-admin.admin-master>
-	
+
 @section('content')
 	<div class="row pt-4">
 		<div class="col-lg-3 col-6">
@@ -27,6 +27,20 @@
 					<i class="ion ion-stats-bars"></i>
 				</div>
 				<a href="{{ route('doctor.view') }}" class="small-box-footer">Doctors <i class="fas fa-arrow-circle-right"></i></a>
+			</div>
+		</div>
+        <!-- ./col -->
+		<div class="col-lg-3 col-6">
+			<!-- small box -->
+			<div class="small-box bg-info">
+				<div class="inner">
+					<h5>Staffs</h5>
+					<p>Add or view list</p>
+				</div>
+				<div class="icon">
+					<i class="ion ion-stats-bars"></i>
+				</div>
+				<a href="{{ route('staff.view')}}" class="small-box-footer">Staffs <i class="fas fa-arrow-circle-right"></i></a>
 			</div>
 		</div>
 		<!-- ./col -->

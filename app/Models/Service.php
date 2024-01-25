@@ -20,6 +20,6 @@ class Service extends Model
     }
 
     public function getPhotoAttribute($value) {
-        return asset('storage/'. $value);
+        return asset('storage/app/'. $value);
     }
 }
