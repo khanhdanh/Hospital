@@ -77,7 +77,7 @@ class StaffController extends Controller
 
         $staff->update();
         session()->flash('staff-update-message', 'Staff member updated successfully.....');
-        return redirect()->route('staff.view');
+        return redirect()->route('staffs.view');
     }
 
     public function delete(Staff $staff) {

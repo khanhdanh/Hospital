@@ -20,9 +20,20 @@ class Doctor extends Model
         return $this->belongsTo(Department::class);
     }
 
+    public function getStatusAttribute($value) {
+        if ($value == 1) {
+            return "Active";
+        } else if ($value == 0) {
+            return "Inactive";
+        }
+    }
+
     public function user()
     {
         return $this->belongsTo(User::class);
     }
 
+    public function doctor() {
+        return $this->hasOne(Doctor::class);
+    }
 }

@@ -24,11 +24,12 @@ class DoctorController extends Controller
 
         request()->validate([
             'department_id' => 'required',
+            'photo' => 'required',
             'name'=> 'required|string',
             'email'=> 'required|string',
             'phone'=> 'required',
             'speciality' => 'required|string',
-            'gender' => 'required|in:male,female,other',
+            'gender' => 'required|in:male,female',
             'status' => 'required|in:active,inactive',
             'password' => 'required|string|min:4|confirmed',
         ]);
@@ -65,12 +66,12 @@ class DoctorController extends Controller
 
         $inputs = request()->validate([
             'department_id' => 'required',
+            'photo' => 'file|required',
             'name'=> 'required',
             'email'=> 'required',
             'phone'=> 'required',
             'speciality' => 'required',
             'gender' => 'required',
-            'photo' => 'file',
             'status' => 'required'
 
         ]);
@@ -89,7 +90,7 @@ class DoctorController extends Controller
 
         $doctor->update();
         session()->flash('doctor-update-message', 'Doctor updated successfully.....');
-        return redirect()->route('doctor.view');
+        return redirect()->route('admin.doctor.view');
     }
 
     public function delete(Doctor $doctor) {

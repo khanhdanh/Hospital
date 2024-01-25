@@ -69,13 +69,4 @@ class User extends Authenticatable
         return $this->hasOne(Doctor::class);
     }
 
-    public function userHasAttendance($date)
-    {
-        foreach($this->attendances as $attendance) {
-            if ($date == $attendance->date) {
-                return true;
-            }
-        }
-    }
-
 }

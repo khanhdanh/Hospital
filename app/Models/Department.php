@@ -22,4 +22,11 @@ class Department extends Model
         return $this->hasMany(Doctor::class);
     }
 
+    public function getStatusAttribute($value) {
+        if ($value == 1) {
+            return "Active";
+        } else if ($value == 0) {
+            return "Inactive";
+        }
+    }
 }

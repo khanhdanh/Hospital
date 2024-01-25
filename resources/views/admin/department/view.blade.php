@@ -80,10 +80,10 @@
                                                                                 <div class="card-body">
                                                                                     <div class="form-group">
                                                                                         <label
-                                                                                            for="doctor-name">Name</label>
+                                                                                            for="department-name">Name</label>
                                                                                         <input type="text"
                                                                                             class="form-control"
-                                                                                            id="doctor-name"
+                                                                                            id="department-name"
                                                                                             value="{{ $department->name }}"
                                                                                             name="name" required>
                                                                                     </div>
@@ -106,7 +106,7 @@
                                                                                                 Active</option>
                                                                                             <option value="0"
                                                                                                 @if ($department->status == 0) selected @endif>
-                                                                                                Deactive</option>
+                                                                                                Inactive</option>
                                                                                         </select>
                                                                                     </div>
 
@@ -173,8 +173,8 @@
                                         @csrf
                                         <div class="card-body">
                                             <div class="form-group">
-                                                <label for="doctor-name">Name</label>
-                                                <input type="text" class="form-control" id="doctor-name"
+                                                <label for="department-name">Name</label>
+                                                <input type="text" class="form-control" id="department-name"
                                                     placeholder="Name" name="name" required>
                                                 <div class="invalid-feedback">
                                                     Name field is required
@@ -199,7 +199,7 @@
                                                 <label>Status</label>
                                                 <select class="form-control" name="status" required>
                                                     <option value="1">Active</option>
-                                                    <option value="0">Deactive</option>
+                                                    <option value="0">Inactive</option>
                                                 </select>
                                                 <div class="invalid-feedback">
                                                     Status is required

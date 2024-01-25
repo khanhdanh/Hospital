@@ -11,11 +11,11 @@ class Service extends Model
 
     protected $guarded = [];
 
-    public function getServiceAvailabilityAttribute($value) {
+    public function getStatusAttribute($value) {
         if ($value == 1) {
-            return "Available";
+            return "Active";
         } else if ($value == 0) {
-            return "Not Available";
+            return "Inactive";
         }
     }
 

@@ -39,6 +39,7 @@
                                     <th>Phone</th>
                                     <th>Speciality</th>
                                     <th>Gender</th>
+                                    <th>Status</th>
                                     <th colspan="2" class="text-center">Action</th>
                                 </tr>
                             </thead>
@@ -56,6 +57,7 @@
                                             <td>{{ $doctor->phone }}</td>
                                             <td>{{ $doctor->speciality }}</td>
                                             <td>{{ $doctor->gender }}</td>
+                                            <td>{{ $doctor->status }}</td>
                                             <td>
                                                 <button type="button" class="btn btn-sm btn-primary" data-toggle="modal"
                                                     data-target="#modal-{{ $doctor->id }}">
@@ -88,6 +90,16 @@
                                                                                 @method('PATCH')
                                                                                 <div class="card-body">
                                                                                     <div class="form-group">
+                                                                                        <div><img
+                                                                                                src="{{ $doctor->photo }}"
+                                                                                                alt="doctor-photo"
+                                                                                                height="50"></div>
+                                                                                        <label for="photo">Photo</label>
+                                                                                        <input type="file"
+                                                                                            class="form-control-file"
+                                                                                            id="photo" name="photo">
+                                                                                    </div>
+                                                                                    <div class="form-group">
                                                                                         <label
                                                                                             for="doctor-name">Name</label>
                                                                                         <input type="text"
@@ -98,8 +110,7 @@
                                                                                     </div>
                                                                                     <div class="form-group">
                                                                                         <label
-                                                                                            for="exampleInputEmail1">Email
-                                                                                            address</label>
+                                                                                            for="exampleInputEmail1">Email</label>
                                                                                         <input type="email"
                                                                                             class="form-control"
                                                                                             id="exampleInputEmail1"
@@ -112,7 +123,7 @@
                                                                                             class="form-control"
                                                                                             id="phone-no"
                                                                                             value="{{ $doctor->phone }}"
-                                                                                            name="phone" required>
+                                                                                            name="phone-no" required>
                                                                                     </div>
                                                                                     <div class="form-group">
                                                                                         <label
@@ -125,22 +136,24 @@
                                                                                     </div>
                                                                                     <div class="form-group">
                                                                                         <label
-                                                                                            for="staff-name">Gender</label>
+                                                                                            for="doctor-gender">Gender</label>
                                                                                         <input type="text"
                                                                                             class="form-control"
-                                                                                            id="staff-gender"
+                                                                                            id="doctor-gender"
                                                                                             value="{{ $doctor->gender }}"
                                                                                             name="gender" required>
                                                                                     </div>
                                                                                     <div class="form-group">
-                                                                                        <div><img
-                                                                                                src="{{ $doctor->photo }}"
-                                                                                                alt="doctor-photo"
-                                                                                                height="80"></div>
-                                                                                        <label for="photo">Photo</label>
-                                                                                        <input type="file"
-                                                                                            class="form-control-file"
-                                                                                            id="photo" name="photo">
+                                                                                        <label>Status</label>
+                                                                                        <select class="form-control"
+                                                                                            name="status" required>
+                                                                                            <option value="1"
+                                                                                                @if ($doctor->status == 1) selected @endif>
+                                                                                                Active</option>
+                                                                                            <option value="0"
+                                                                                                @if ($doctor->status == 0) selected @endif>
+                                                                                                Inactive</option>
+                                                                                        </select>
                                                                                     </div>
                                                                                 </div>
                                                                                 <!-- /.card-body -->
@@ -239,7 +252,7 @@
                                                 <div class="form-group col-md-3">
                                                     <label for="phone-no">Phone</label>
                                                     <input type="number" class="form-control" id="phone-no"
-                                                        placeholder="Contact No" name="phone" required>
+                                                        placeholder="Contact No" name="phone-no" required>
                                                     <div class="invalid-feedback">
                                                         Contact is required
                                                     </div>
@@ -302,6 +315,18 @@
                                                     @error('photo')
                                                         <span class="text-danger">{{ $message }}</span>
                                                     @enderror
+                                                </div>
+                                                <div class="form-group">
+                                                    <label>Status</label>
+                                                    <select class="form-control"
+                                                        name="status" required>
+                                                        <option value="1"
+                                                            @if ($doctor->status == 1) selected @endif>
+                                                            Active</option>
+                                                        <option value="0"
+                                                            @if ($doctor->status == 0) selected @endif>
+                                                            Inactive</option>
+                                                    </select>
                                                 </div>
                                             </div>
                                         </div>
