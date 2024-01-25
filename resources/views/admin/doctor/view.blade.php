@@ -38,7 +38,7 @@
                                     <th>Email</th>
                                     <th>Phone</th>
                                     <th>Speciality</th>
-
+                                    <th>Gender</th>
                                     <th colspan="2" class="text-center">Action</th>
                                 </tr>
                             </thead>
@@ -55,7 +55,7 @@
                                             <td>{{ $doctor->email }}</td>
                                             <td>{{ $doctor->phone }}</td>
                                             <td>{{ $doctor->speciality }}</td>
-
+                                            <td>{{ $doctor->gender }}</td>
                                             <td>
                                                 <button type="button" class="btn btn-sm btn-primary" data-toggle="modal"
                                                     data-target="#modal-{{ $doctor->id }}">
@@ -123,7 +123,15 @@
                                                                                             value="{{ $doctor->speciality }}"
                                                                                             name="speciality" required>
                                                                                     </div>
-
+                                                                                    <div class="form-group">
+                                                                                        <label
+                                                                                            for="staff-name">Gender</label>
+                                                                                        <input type="text"
+                                                                                            class="form-control"
+                                                                                            id="staff-gender"
+                                                                                            value="{{ $doctor->gender }}"
+                                                                                            name="gender" required>
+                                                                                    </div>
                                                                                     <div class="form-group">
                                                                                         <div><img
                                                                                                 src="{{ $doctor->photo }}"

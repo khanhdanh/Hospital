@@ -5,8 +5,8 @@ use App\Http\Controllers\StaffController;
 
 Route::middleware(['auth', 'role:super-admin'])->group(function () {
 
-    Route::get('/view/staffs', [StaffController::class, 'index'])->name('staff.view');
-    Route::post('/store/staffs', [StaffController::class, 'store'])->name('staff.store');
-    Route::patch('/update/staffs/{staff}', [StaffController::class, 'update'])->name('staff.update');
-    Route::delete('/delete/staffs/{staff}', [StaffController::class, 'delete'])->name('staff.delete');
+    Route::get('/view/staffs', [StaffController::class, 'index'])->name('staffs.view');
+    Route::post('/store/staffs', [StaffController::class, 'store'])->name('staffs.store');
+    Route::patch('/update/staffs/{staffs}', [StaffController::class, 'update'])->name('staffs.update');
+    Route::delete('/delete/staffs/{staffs}', [StaffController::class, 'delete'])->name('staffs.delete');
 });

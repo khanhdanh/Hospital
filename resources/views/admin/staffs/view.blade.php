@@ -38,7 +38,7 @@
                                     <th>Birthday</th>
                                     <th>Phone</th>
                                     <th>Email</th>
-                                    <th>Note</th>
+                                    <th>Description</th>
                                     <th colspan="2" class="text-center">Action</th>
                                 </tr>
                             </thead>
@@ -53,7 +53,7 @@
                                             <td>{{ $staff->dob }}</td>
                                             <td>{{ $staff->phone }}</td>
                                             <td>{{ $staff->email }}</td>
-
+                                            <td>{{ $staff->description }}</td>
 
 
                                             <td>
@@ -132,7 +132,7 @@
                                                                                     </div>
 
                                                                                     <div class="form-group">
-                                                                                        <label for="speciality">Note</label>
+                                                                                        <label for="speciality">Description</label>
                                                                                         <input type="text"
                                                                                             class="form-control"
                                                                                             id="note" value=""

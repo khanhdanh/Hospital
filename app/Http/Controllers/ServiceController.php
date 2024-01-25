@@ -34,18 +34,14 @@ class ServiceController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store()
+    public function store(Request $request)
     {
         $inputs = request()->validate([
             'name' => 'required',
             'description' => 'required',
-            'service_cost' => 'required|numeric',
-            'status' => 'required|in:active,inactive',
+            'service_cost' => 'required',
+            'status' => 'required|in:active,inactive'
         ]);
-
-        if (request->hasFile('photo')) {
-            $inputs['photo'] = request->file('photo')->store('images');
-        }
 
         Service::create($inputs);
         session()->flash('service-create-message', 'Service Created Successfully');
@@ -69,7 +65,7 @@ class ServiceController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Service $services)
+    public function edit(Service $service)
     {
         return view('admin.service.edit', compact('service'));
     }
@@ -81,21 +77,21 @@ class ServiceController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Service $services)
+    public function update(Service $service)
     {
         $inputs = request()->validate([
             'name' => 'required',
             'description' => 'required',
             'service_cost' => 'required',
-            'service_availability' => 'required',
+            'status' => 'required|in:active,inactive'
         ]);
 
-        $services->name = $inputs['name'];
-        $services->description = $inputs['description'];
-        $services->service_cost = $inputs['service_cost'];
-        $services->service_availability = $inputs['service_availability'];
+        $service->name = $inputs['name'];
+        $service->description = $inputs['description'];
+        $service->service_cost = $inputs['service_cost'];
+        $service->status = $inputs['status'];
 
-        $services->update();
+        $service->update();
         session()->flash('service-update-message', 'Service Updated Successfully');
         return redirect()->route('service.index');
     }
@@ -106,15 +102,11 @@ class ServiceController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Service $services)
+    public function destroy(Service $service)
     {
-        $services->delete();
+        $service->delete();
         session()->flash('service-delete-message', 'Record Deleted.......');
         return back();
     }
 
-    public function book(Service $services)
-    {
-        return view('frontend.service.book', compact('services'));
-    }
 }

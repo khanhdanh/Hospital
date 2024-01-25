@@ -40,7 +40,7 @@
 				<div class="icon">
 					<i class="ion ion-stats-bars"></i>
 				</div>
-				<a href="{{ route('staff.view')}}" class="small-box-footer">Staffs <i class="fas fa-arrow-circle-right"></i></a>
+				<a href="{{ route('staffs.view')}}" class="small-box-footer">Staffs <i class="fas fa-arrow-circle-right"></i></a>
 			</div>
 		</div>
 		<!-- ./col -->

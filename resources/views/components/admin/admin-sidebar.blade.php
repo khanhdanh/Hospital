@@ -42,6 +42,8 @@
 
                     <x-admin.sidebar_link.admin-sidebar-staff-link></x-admin.sidebar_link.admin-sidebar-staff-link>
 
+                    <x-admin.sidebar_link.admin-sidebar-patient-link></x-admin.sidebar_link.admin-sidebar-patient-link>
+
                     <x-admin.sidebar_link.admin-sidebar-service-link></x-admin.sidebar_link.admin-sidebar-service-link>
                 @endif
 
@@ -59,7 +61,7 @@
                 @endif
 
                 <x-admin.sidebar_link.admin-sidebar-profile-link></x-admin.sidebar_link.admin-sidebar-profile-link>
-                <x-admin.sidebar_link.admin-sidebar-patient-link></x-admin.sidebar_link.admin-sidebar-patient-link>
+
 
                 <!-- <li class="nav-item menu-open">
                     <a href="{{ route('admin.message.doctor') }}" class="nav-link">

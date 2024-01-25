@@ -15,7 +15,7 @@ class StaffController extends Controller
 
     public function index() {
         $staffs = Staff::all();
-    	return view('admin.staff.view', compact('staffs'));
+    	return view('admin.staffs.view', compact('staffs'));
     }
 
     public function store(Request $request) {
@@ -56,7 +56,7 @@ class StaffController extends Controller
         return back()->withErrors(['Error' => 'An error occurred while creating the staff member.']);
     }
 
-    public function update(Staff $staffMember) {
+    public function update(Staff $staff) {
 
         $inputs = request()->validate([
             'user_id' => 'required',
@@ -75,7 +75,7 @@ class StaffController extends Controller
         $staff->email = $inputs['email'];
         $staff->description = $inputs['description'];
 
-        $staffMember->update();
+        $staff->update();
         session()->flash('staff-update-message', 'Staff member updated successfully.....');
         return redirect()->route('staff.view');
     }

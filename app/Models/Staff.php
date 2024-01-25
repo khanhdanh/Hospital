@@ -15,12 +15,6 @@ class Staff extends Model
         return asset('storage/app/' . $value);
     }
 
-    public function department()
-    {
-        return $this->belongsTo(Department::class);
-    }
-
-
     public function user()
     {
         return $this->belongsTo(User::class);
