@@ -94,10 +94,10 @@
                                                                                                 src="{{ $doctor->photo }}"
                                                                                                 alt="doctor-photo"
                                                                                                 height="50"></div>
-                                                                                        <label for="photo">Photo</label>
+                                                                                        <label for="doctor-photo">Photo</label>
                                                                                         <input type="file"
                                                                                             class="form-control-file"
-                                                                                            id="photo" name="photo">
+                                                                                            id="doctor-photo" name="photo">
                                                                                     </div>
                                                                                     <div class="form-group">
                                                                                         <label
@@ -123,14 +123,14 @@
                                                                                             class="form-control"
                                                                                             id="phone-no"
                                                                                             value="{{ $doctor->phone }}"
-                                                                                            name="phone-no" required>
+                                                                                            name="phone" required>
                                                                                     </div>
                                                                                     <div class="form-group">
                                                                                         <label
-                                                                                            for="speciality">Speciality</label>
+                                                                                            for="doctor-speciality">Speciality</label>
                                                                                         <input type="text"
                                                                                             class="form-control"
-                                                                                            id="speciality"
+                                                                                            id="doctor-speciality"
                                                                                             value="{{ $doctor->speciality }}"
                                                                                             name="speciality" required>
                                                                                     </div>
@@ -236,7 +236,7 @@
                                                 </div>
                                                 <div class="form-group col-md-6">
                                                     <label for="birthday">Birthday</label> <br>
-                                                    <input type="date" id="dob" name="dob">
+                                                    <input type="date" id="birthday" name="dob">
                                                 </div>
                                                 <div class="form-group col-md-6">
                                                     <label for="exampleInputEmail1">Email address</label>
@@ -252,7 +252,7 @@
                                                 <div class="form-group col-md-3">
                                                     <label for="phone-no">Phone</label>
                                                     <input type="number" class="form-control" id="phone-no"
-                                                        placeholder="Contact No" name="phone-no" required>
+                                                        placeholder="Contact No" name="phone" required>
                                                     <div class="invalid-feedback">
                                                         Contact is required
                                                     </div>
@@ -261,8 +261,8 @@
                                                     @enderror
                                                 </div>
                                                 <div class="form-group col-md-3">
-                                                    <label for="speciality">Speciality</label>
-                                                    <input type="text" class="form-control" id="speciality"
+                                                    <label for="doctor-speciality">Speciality</label>
+                                                    <input type="text" class="form-control" id="doctor-speciality"
                                                         placeholder="Speciality" name="speciality" required>
                                                     <div class="invalid-feedback">
                                                         Speciality is required
@@ -275,7 +275,7 @@
                                                     <label for="password">{{ __('Password') }}</label>
                                                     <input id="password" type="password"
                                                         class="form-control @error('password') is-invalid @enderror"
-                                                        name="password" required autocomplete="new-password">
+                                                        name="password-req" required autocomplete="new-password">
                                                     <div class="invalid-feedback">
                                                         Password is required
                                                     </div>
@@ -289,7 +289,7 @@
                                                 <div class="form-group col-md-3">
                                                     <label for="password-confirm">{{ __('Confirm Password') }}</label>
                                                     <input id="password-confirm" type="password" class="form-control"
-                                                        name="password_confirmation" required autocomplete="new-password">
+                                                        name="password_con" required autocomplete="new-password">
                                                 </div>
                                                 <div class="form-group col-md-6">
                                                     <label>Department</label>
@@ -309,8 +309,8 @@
                                                     @enderror
                                                 </div>
                                                 <div class="form-group col-md-6">
-                                                    <label for="photo">Photo</label>
-                                                    <input type="file" class="form-control-file" id="photo"
+                                                    <label for="doctor-photo">Photo</label>
+                                                    <input type="file" class="form-control-file" id="doctor-photo"
                                                         name="photo">
                                                     @error('photo')
                                                         <span class="text-danger">{{ $message }}</span>

@@ -15,7 +15,7 @@ class ServiceController extends Controller
 
     public function create()
     {
-        return view('admin.service.add');
+        return view('admin.service.update');
     }
 
     public function store(Request $request)

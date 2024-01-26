@@ -22,7 +22,7 @@ class DoctorController extends Controller
 
     public function store(Request $request) {
 
-        request()->validate([
+       $inputs = request()->validate([
             'department_id' => 'required',
             'photo' => 'required',
             'name'=> 'required|string',
@@ -43,8 +43,8 @@ class DoctorController extends Controller
         $docUser->save();
 
         $doctor = new Doctor();
-        $doctor->user_id = $docUser->id;
         $doctor->department_id = request('department_id');
+        $doctor->photo = request('photo')->store('img');
         $doctor->name = request('name');
         $doctor->email = request('email');
         $doctor->phone = request('phone');
@@ -53,13 +53,13 @@ class DoctorController extends Controller
         $doctor->slug = Str::slug(request('name'));
         $doctor->status = 1;
 
-        if (request('photo')) {
-            $doctor->photo = request('photo')->store('img');
-        }
+
         $doctor->save();
         $docUser->roles()->attach(Role::find(2));
+
+        Doctor::store($inputs);
         session()->flash('doctor-create-message', 'Doctor created successfully.....');
-        return back()->withErrors(['Error' => 'An error occurred while creating the doctor.']);
+        return redirect()->route('doctor.view');
     }
 
     public function update(Doctor $doctor) {
