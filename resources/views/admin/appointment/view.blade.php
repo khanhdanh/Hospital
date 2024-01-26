@@ -23,13 +23,11 @@
 							<th>ID</th>
 							<th>Name</th>
 							<th>Phone</th>
-							<th>Age</th>
+                            <th>Email</th>
+							<th>Birthday</th>
 							<th>Blood Group</th>
 							<th>Department</th>
-							<th>Doctor</th>
 							<th>Appointment Time</th>
-							<th>Created At</th>
-							<th>Updated At</th>
 							<th>Action</th>
 						</tr>
 					</thead>
@@ -40,13 +38,11 @@
 								<td>{{ $appointment->id }}</td>
 								<td><a href="#">{{ $appointment->name }}</a></td>
 								<td>{{ $appointment->phone }}</td>
-								<td>{{ $appointment->age }}</td>
+                                <td>{{ $appointment->email }}</td>
+								<td>{{ $appointment->dob }}</td>
 								<td>{{ $appointment->blood_group }}</td>
 								<td>{{ $appointment->department }}</td>
-								<td>{{ $appointment->doctor_id }}</td>
 								<td>{{ $appointment->appointment_time }}</td>
-								<td>{{ $appointment->created_at->diffForHumans() }}</td>
-								<td>{{ $appointment->updated_at->diffForHumans() }}</td>
 								<td>
 									<form action="" method="post">
 										@csrf
@@ -89,26 +85,33 @@
 				                <div class="card-body">
 				                <div class="row">
 				                    <div class="form-group col-md-6">
-				                        <label for="doctor-name">Patient name</label>
-				                        <input type="text" class="form-control" id="doctor-name" placeholder="Name" name="name">
+				                        <label for="patient-name">Patient name</label>
+				                        <input type="text" class="form-control" id="patient-name" placeholder="Name" name="name">
 				                    @error('name')
 				                        <span class="text-danger">{{ $message }}</span>
 				                    @enderror
 				                    </div>
 				                    <div class="form-group col-md-6">
-				                        <label for="exampleInputEmail1">Phone</label>
+				                        <label for="exampleInputEmail1">Email</label>
 				                        <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
 				                    @error('email')
 				                        <span class="text-danger">{{ $message }}</span>
 				                    @enderror
 				                    </div>
 				                    <div class="form-group col-md-4">
-				                        <label for="phone-no">Age</label>
+				                        <label for="phone-no">Phone</label>
 				                        <input type="number" class="form-control" id="phone-no" placeholder="Contact No">
 				                    @error('name')
 				                        <span class="text-danger">{{ $message }}</span>
 				                    @enderror
 				                    </div>
+                                    <div class="form-group col-md-4">
+                                        <label for="dob">Birthday</label>
+                                        <input type="date" class="form-control" id="dob" placeholder="Enter birthday">
+                                    @error('name')
+                                        <span class="text-danger">{{ $message }}</span>
+                                    @enderror
+                                    </div>
 				                    <div class="form-group col-md-4">
 				                        <label>Blood Group</label>
 				                        <select class="form-control" name="blood_group">
@@ -137,17 +140,7 @@
 				                        @endforeach()
 				                        </select>
 				                    </div>
-				                    <div class="form-group col-lg-6">
-				                        <label>Doctor</label>
-				                        <select class="form-control" name="doctor_name">
-				                            <option>Select Consultant</option>
-				                        @foreach($doctors as $doctor)
-				                            <option value="{{ $doctor->id }}">
-				                                {{ $doctor->name }}
-				                            </option>
-				                        @endforeach
-				                        </select>
-				                    </div>
+
 				                </div>
 				                </div>
 				                <!-- /.card-body -->

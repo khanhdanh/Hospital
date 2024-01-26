@@ -15,15 +15,22 @@
                     @enderror
                     </div>
                     <div class="form-group col-md-6">
-                        <label for="exampleInputEmail1">Phone</label>
+                        <label for="exampleInputEmail1">Email</label>
                         <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
                     @error('email')
                         <span class="text-danger">{{ $message }}</span>
                     @enderror
                     </div>
                     <div class="form-group col-md-4">
-                        <label for="phone-no">Age</label>
+                        <label for="phone-no">Phone</label>
                         <input type="number" class="form-control" id="phone-no" placeholder="Contact No">
+                    @error('name')
+                        <span class="text-danger">{{ $message }}</span>
+                    @enderror
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="dob">Birthday</label>
+                        <input type="date" class="form-control" id="dob" placeholder="Enter birthday">
                     @error('name')
                         <span class="text-danger">{{ $message }}</span>
                     @enderror
@@ -56,17 +63,7 @@
                         @endforeach()
                         </select>
                     </div>
-                    <div class="form-group col-lg-6">
-                        <label>Doctor</label>
-                        <select class="form-control" name="doctor_name">
-                            <option>Select Consultant</option>
-                        @foreach($doctors as $doctor)
-                            <option value="{{ $doctor->id }}">
-                                {{ $doctor->name }}
-                            </option>
-                        @endforeach
-                        </select>
-                    </div>
+
                 </div>
                 </div>
                 <!-- /.card-body -->

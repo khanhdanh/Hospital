@@ -1,7 +1,7 @@
 <x-frontend.frontend-master>
 @section('content')
     <div class="container">
-        
+
         <div class="section-top-border">
             <div class="row">
                 <h4 class="offset-lg-1 col-md-10 mb-4">TO REQUEST FOR AN ONLINE APPOINTMENT, PLEASE COMPLETE THE FORM BELOW AND CLICK THE “REQUEST” BUTTON.</h4>
@@ -34,15 +34,15 @@
                                 <label>Doctor</label>
                                 <select class="form-control" name="doctor_id" id="doctor_id">
                                     <option>Select Department First</option>
-                                
+
                                 </select>
                             @error('doctor_id')
                                 <span style="color: red;">{{ $message }}</span>
                             @enderror
                             </div>
                             <div class="form-group col-lg-4">
-                                <label for="doctor-name">Patient full name</label>
-                                <input type="text" class="form-control" id="doctor-name" placeholder="Name" name="name">
+                                <label for="patient-name">Patient full name</label>
+                                <input type="text" class="form-control" id="patient-name" placeholder="Name" name="name">
                             @error('name')
                                 <span style="color: red;">{{ $message }}</span>
                             @enderror
@@ -88,7 +88,7 @@
                                 <!-- <input type="date" class="form-control" id="date" name="appointment_time"> -->
                                 <select class="form-control" name="appointment_time" id="appointment_time">
                                     <option>Select Consultant</option>
-                                
+
                                 </select>
                             @error('appointment_time')
                                 <span style="color: red;">{{ $message }}</span>
@@ -131,7 +131,7 @@
                     if(data){
                         $('#doctor_id').empty();
                         $('#doctor_id').focus;
-                        $('#doctor_id').append('<option value="">-- Select doctor --</option>'); 
+                        $('#doctor_id').append('<option value="">-- Select doctor --</option>');
                         $.each(data, function(key, value){
                         $('#doctor_id').append('<option value="'+ value.id +'">' + value.name+ '</option>');
                     });
@@ -158,7 +158,7 @@
                     if(data){
                         $('#appointment_time').empty();
                         $('#appointment_time').focus;
-                        $('#appointment_time').append('<option value="">-- Available Appointment Time --</option>'); 
+                        $('#appointment_time').append('<option value="">-- Available Appointment Time --</option>');
                         $.each(data, function(key, value){
                         $('#appointment_time').append('<option value="'+ value.day +'">' + value.day+ '</option>');
                     });
