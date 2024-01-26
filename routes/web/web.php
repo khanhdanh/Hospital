@@ -31,6 +31,11 @@ Route::middleware('auth')->group(function() {
 
 Route::get('admin', [AdminController::class, 'index'])->name('admin.index');
 
+/****    APPOINTMENT SECTION   ****/
+Route::resource('appointment', 'AppointmentController');
+Route::get('admin/appointment/list', [AdminController::class, 'list'])->name('admin.list');
+
+
 
 /****    PROFILE SECTION   ****/
 Route::get('/user/{user}/profile', 'UserController@profile')->name('user.profile');
