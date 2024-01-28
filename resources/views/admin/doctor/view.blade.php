@@ -38,7 +38,6 @@
                                     <th>Email</th>
                                     <th>Phone</th>
                                     <th>Speciality</th>
-                                    <th>Gender</th>
                                     <th colspan="2" class="text-center">Action</th>
                                 </tr>
                             </thead>
@@ -54,7 +53,7 @@
                                             <td>{{ $doctor->email }}</td>
                                             <td>{{ $doctor->phone }}</td>
                                             <td>{{ $doctor->speciality }}</td>
-                                            <td>{{ $doctor->gender }}</td>
+
                                             <td>
                                                 <button type="button" class="btn btn-sm btn-primary" data-toggle="modal"
                                                     data-target="#modal-{{ $doctor->id }}">
@@ -95,18 +94,7 @@
                                                                                             value="{{ $doctor->name }}"
                                                                                             name="name" required>
                                                                                     </div>
-                                                                                    <div class="form-group">
-                                                                                        <label>Status</label>
-                                                                                        <select class="form-control"
-                                                                                            name="gender" required>
-                                                                                            <option value="Male"
-                                                                                                @if ($doctor->gender == 1) selected @endif>
-                                                                                                Male</option>
-                                                                                            <option value="Female"
-                                                                                                @if ($doctor->gender == 0) selected @endif>
-                                                                                                Female</option>
-                                                                                        </select>
-                                                                                    </div>
+
                                                                                     <div class="form-group">
                                                                                         <label
                                                                                             for="exampleInputEmail1">Email
@@ -214,17 +202,6 @@
                                                         Name field is required
                                                     </div>
                                                     @error('name')
-                                                        <span class="text-danger">{{ $message }}</span>
-                                                    @enderror
-                                                </div>
-
-                                                <div class="form-group col-md-3">
-                                                    <label>Gender</label>
-                                                    <select class="form-control" name="gender" required>
-                                                        <option value="Male">Male</option>
-                                                        <option value="Female">Female</option>
-                                                    </select>
-                                                    @error('gender')
                                                         <span class="text-danger">{{ $message }}</span>
                                                     @enderror
                                                 </div>

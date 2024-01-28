@@ -24,7 +24,6 @@ class DoctorController extends Controller
 
         request()->validate([
             'name'=> 'required',
-            'gender'=> 'required',
             'email'=> 'required',
             'phone'=> 'required',
             'speciality' => 'required',
@@ -34,7 +33,6 @@ class DoctorController extends Controller
 
         $docUser = new User();
         $docUser->name = request('name');
-        $docUser->name = request('gender');
         $docUser->email = request('email');
         $docUser->phone = request('phone');
         $docUser->password = Hash::make(request('password'));
@@ -44,7 +42,6 @@ class DoctorController extends Controller
         $doctor = new Doctor();
         $doctor->user_id = $docUser->id;
         $doctor->name = request('name');
-        $doctor->name = request('gender');
         $doctor->email = request('email');
         $doctor->phone = request('phone');
         $doctor->department_id = request('department_id');
@@ -66,7 +63,6 @@ class DoctorController extends Controller
         $inputs = request()->validate([
 
             'name'=> 'required',
-            'gender'=> 'required',
             'email'=> 'required',
             'phone'=> 'required',
             'speciality' => 'required',
@@ -75,7 +71,6 @@ class DoctorController extends Controller
         ]);
 
         $doctor->name = $inputs['name'];
-        $doctor->gender = $inputs['gender'];
         $doctor->email = $inputs['email'];
         $doctor->phone = $inputs['phone'];
         $doctor->speciality = $inputs['speciality'];
