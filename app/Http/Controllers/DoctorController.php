@@ -7,9 +7,9 @@ use App\Models\Doctor;
 use App\Models\Department;
 use App\Models\Role;
 use App\Models\User;
-use Illuminate\Support\Facades\Str;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Str;
 
 class DoctorController extends Controller
 {
@@ -23,33 +23,34 @@ class DoctorController extends Controller
     public function store(Request $request) {
 
         request()->validate([
-            'department_id' => 'required',
-            'name'=> 'required|string',
-            'email'=> 'required|string',
+            'name'=> 'required',
+            'gender'=> 'required',
+            'email'=> 'required',
             'phone'=> 'required',
-            'speciality' => 'required|string',
-            'gender' => 'required|in:male,female,other',
-            'status' => 'required|in:active,inactive',
-            'password' => 'required|string|min:4|confirmed',
+            'speciality' => 'required',
+            'department_id' => 'required',
+            'password' => 'required|string|min:8|confirmed',
         ]);
 
         $docUser = new User();
         $docUser->name = request('name');
+        $docUser->name = request('gender');
         $docUser->email = request('email');
         $docUser->phone = request('phone');
         $docUser->password = Hash::make(request('password'));
-
+        $docUser->slug = Str::slug(request('name'));
         $docUser->save();
 
         $doctor = new Doctor();
         $doctor->user_id = $docUser->id;
-        $doctor->department_id = request('department_id');
         $doctor->name = request('name');
+        $doctor->name = request('gender');
         $doctor->email = request('email');
         $doctor->phone = request('phone');
+        $doctor->department_id = request('department_id');
         $doctor->speciality = request('speciality');
-        $doctor->gender = request('gender');
-
+        $doctor->slug = Str::slug(request('name'));
+        $doctor->status = 1;
 
         if (request('photo')) {
             $doctor->photo = request('photo')->store('images');
@@ -57,31 +58,29 @@ class DoctorController extends Controller
         $doctor->save();
         $docUser->roles()->attach(Role::find(2));
         session()->flash('doctor-create-message', 'Doctor created successfully.....');
-        return back()->withErrors(['Error' => 'An error occurred while creating the doctor.']);
+        return back();
     }
 
     public function update(Doctor $doctor) {
 
         $inputs = request()->validate([
-            'department_id' => 'required',
+
             'name'=> 'required',
+            'gender'=> 'required',
             'email'=> 'required',
             'phone'=> 'required',
             'speciality' => 'required',
-            'gender' => 'required',
-            'photo' => 'file',
-            'status' => 'required'
+            'photo' => 'file'
 
         ]);
-        $inputs['status'] = $inputs['status'] ?? $doctor->status;
+
         $doctor->name = $inputs['name'];
+        $doctor->gender = $inputs['gender'];
         $doctor->email = $inputs['email'];
         $doctor->phone = $inputs['phone'];
         $doctor->speciality = $inputs['speciality'];
-        $doctor->gender = $inputs['gender'];
-        $doctor->status = $inputs['status'];
 
-        if (request()->hasFile('photo')) {
+        if (request('photo')) {
             $inputs['photo'] = request('photo')->store('images');
             $doctor->photo = $inputs['photo'];
         }
@@ -98,4 +97,3 @@ class DoctorController extends Controller
     }
 
 }
-?>

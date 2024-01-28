@@ -22,7 +22,7 @@
                 </button>
             </div>
 
-            <div class="col-12">
+            <div class="col-12 ">
                 <div class="card">
                     <div class="card-header">
                         <h3 class="card-title">Services</h3>
@@ -46,7 +46,7 @@
                                         <tr>
                                             <td>{{ $service->id }}</td>
                                             <td>{{ $service->name }}</a></td>
-                                            <td>{{ Str::words($service->description, 10) }}</td>
+                                            <td>{{ Str::words($service->description, 11) }}</td>
                                             <td>{{ $service->service_cost }}</td>
                                             <td>{{ $service->status }}</td>
                                             <td>
@@ -62,7 +62,7 @@
                                                                 <h4 class="modal-title">Edit Services</h4>
                                                                 <button type="button" class="close" data-dismiss="modal"
                                                                     aria-label="Close">
-                                                                    <span aria-hidden="true">×</span>
+                                                                    <span aria-hidden="true"></span>
                                                                 </button>
                                                             </div>
                                                             <div class="modal-body">
@@ -107,10 +107,10 @@
                                                                                         <label>Status</label>
                                                                                         <select class="form-control"
                                                                                             name="status" required>
-                                                                                            <option value="1"
+                                                                                            <option value="Active"
                                                                                                 @if ($service->status == 1) selected @endif>
                                                                                                 Active</option>
-                                                                                            <option value="0"
+                                                                                            <option value="Inactive"
                                                                                                 @if ($service->status == 0) selected @endif>
                                                                                                 Inactive</option>
                                                                                         </select>
@@ -199,16 +199,18 @@
                                                     <span class="text-danger">{{ $message }}</span>
                                                 @enderror
                                             </div>
+
                                             <div class="form-group">
                                                 <label>Status</label>
                                                 <select class="form-control" name="status" required>
-                                                    <option value="1">Active</option>
-                                                    <option value="0">Inactive</option>
+                                                    <option value="Active">Active</option>
+                                                    <option value="Inactive">Inactive</option>
                                                 </select>
                                                 @error('status')
                                                     <span class="text-danger">{{ $message }}</span>
                                                 @enderror
                                             </div>
+
                                         </div>
                                         <!-- /.card-body -->
                                         <div class="card-footer">

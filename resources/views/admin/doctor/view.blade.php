@@ -50,8 +50,7 @@
                                             <td>
                                                 <img height="50" src="{{ $doctor->photo }}" alt="doctor-photo">
                                             </td>
-                                            <td><a data-toggle="modal" data-target="#modal-{{ $doctor->id }}"
-                                                    href="">{{ $doctor->name }}</a></td>
+                                            <td>{{ $doctor->name }}</td>
                                             <td>{{ $doctor->email }}</td>
                                             <td>{{ $doctor->phone }}</td>
                                             <td>{{ $doctor->speciality }}</td>
@@ -97,6 +96,18 @@
                                                                                             name="name" required>
                                                                                     </div>
                                                                                     <div class="form-group">
+                                                                                        <label>Status</label>
+                                                                                        <select class="form-control"
+                                                                                            name="gender" required>
+                                                                                            <option value="Male"
+                                                                                                @if ($doctor->gender == 1) selected @endif>
+                                                                                                Male</option>
+                                                                                            <option value="Female"
+                                                                                                @if ($doctor->gender == 0) selected @endif>
+                                                                                                Female</option>
+                                                                                        </select>
+                                                                                    </div>
+                                                                                    <div class="form-group">
                                                                                         <label
                                                                                             for="exampleInputEmail1">Email
                                                                                             address</label>
@@ -140,7 +151,7 @@
                                                                                     <button type="submit"
                                                                                         class="btn btn-primary">Submit</button>
                                                                                 </div>
-                                                                            </form>
+                                                                              </form>
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -206,17 +217,18 @@
                                                         <span class="text-danger">{{ $message }}</span>
                                                     @enderror
                                                 </div>
-                                                <div class="form-group col-md-6">
-                                                    <label for="exampleInputEmail1">Email address</label>
-                                                    <input type="email" class="form-control" id="exampleInputEmail1"
-                                                        placeholder="Enter email" name="email" required>
-                                                    <div class="invalid-feedback">
-                                                        Email field is required
-                                                    </div>
-                                                    @error('email')
+
+                                                <div class="form-group col-md-3">
+                                                    <label>Gender</label>
+                                                    <select class="form-control" name="gender" required>
+                                                        <option value="Male">Male</option>
+                                                        <option value="Female">Female</option>
+                                                    </select>
+                                                    @error('gender')
                                                         <span class="text-danger">{{ $message }}</span>
                                                     @enderror
                                                 </div>
+
                                                 <div class="form-group col-md-3">
                                                     <label for="phone-no">Phone</label>
                                                     <input type="number" class="form-control" id="phone-no"
@@ -228,7 +240,22 @@
                                                         <span class="text-danger">{{ $message }}</span>
                                                     @enderror
                                                 </div>
-                                                <div class="form-group col-md-3">
+
+                                                <div class="form-group col-md-6">
+                                                    <label for="exampleInputEmail1">Email address</label>
+                                                    <input type="email" class="form-control" id="exampleInputEmail1"
+                                                        placeholder="Enter email" name="email" required>
+                                                    <div class="invalid-feedback">
+                                                        Email field is required
+                                                    </div>
+                                                    @error('email')
+                                                        <span class="text-danger">{{ $message }}</span>
+                                                    @enderror
+                                                </div>
+
+
+
+                                                <div class="form-group col-md-6">
                                                     <label for="speciality">Speciality</label>
                                                     <input type="text" class="form-control" id="speciality"
                                                         placeholder="Speciality" name="speciality" required>
@@ -284,6 +311,7 @@
                                                         <span class="text-danger">{{ $message }}</span>
                                                     @enderror
                                                 </div>
+
                                             </div>
                                         </div>
                                         <!-- /.card-body -->

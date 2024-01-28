@@ -7,7 +7,7 @@ use App\Models\Staff;
 use App\Models\Department;
 use App\Models\Role;
 use App\Models\User;
-use Str;
+use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 
@@ -39,7 +39,7 @@ class StaffController extends Controller
         $staffUser->phone = request('phone');
         $staffUser->dob = request('dob');
         $staffUser->password = Hash::make(request('password'));
-        $staff->slug = Str::slug(request('name'));
+        $staffUser->slug = Str::slug(request('name'));
         $staffUser->save();
 
         $staffMember = new Staff();
@@ -49,7 +49,7 @@ class StaffController extends Controller
         $staffMember->phone = request('phone');
         $staffMember->dob = request('dob');
         $staffMember->gender = request('gender');
-        $staff->slug = Str::slug(request('name'));
+        $staffMember->slug = Str::slug(request('name'));
         $staffMember->description = null;
 
 

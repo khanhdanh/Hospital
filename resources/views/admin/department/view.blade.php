@@ -60,7 +60,7 @@
                                                                 <h4 class="modal-title">Edit Department</h4>
                                                                 <button type="button" class="close" data-dismiss="modal"
                                                                     aria-label="Close">
-                                                                    <span aria-hidden="true">×</span>
+                                                                    <span aria-hidden="true"></span>
                                                                 </button>
                                                             </div>
                                                             <div class="modal-body">
