@@ -38,6 +38,10 @@
                                     <th>Email</th>
                                     <th>Phone</th>
                                     <th>Speciality</th>
+                                    <th>Years of Experience</th>
+                                    <th>Gender</th>
+                                    <th>Status</th>
+                                    <th>Description</th>
                                     <th colspan="2" class="text-center">Action</th>
                                 </tr>
                             </thead>
@@ -53,7 +57,10 @@
                                             <td>{{ $doctor->email }}</td>
                                             <td>{{ $doctor->phone }}</td>
                                             <td>{{ $doctor->speciality }}</td>
-
+                                            <td style="text-align: center">{{ $doctor->yoe }}</td>
+                                            <td>{{ $doctor->gender }}</td>
+                                            <td>{{ $doctor->status }}</td>
+                                            <td>{{ Str::words($doctor->description, 11) }}</td>
                                             <td>
                                                 <button type="button" class="btn btn-sm btn-primary" data-toggle="modal"
                                                     data-target="#modal-{{ $doctor->id }}">
@@ -84,7 +91,19 @@
 
                                                                                 @csrf
                                                                                 @method('PATCH')
+
                                                                                 <div class="card-body">
+                                                                                    <div class="form-group">
+                                                                                        <label for="photo">Photo</label>
+                                                                                        <div><img
+                                                                                                src="{{ $doctor->photo }}"
+                                                                                                alt="doctor-photo"
+                                                                                                height="90"></div>
+
+                                                                                        <input type="file"
+                                                                                            class="form-control-file"
+                                                                                            id="photo" name="photo">
+                                                                                    </div>
                                                                                     <div class="form-group">
                                                                                         <label
                                                                                             for="doctor-name">Name</label>
@@ -122,24 +141,57 @@
                                                                                             value="{{ $doctor->speciality }}"
                                                                                             name="speciality" required>
                                                                                     </div>
-
                                                                                     <div class="form-group">
-                                                                                        <div><img
-                                                                                                src="{{ $doctor->photo }}"
-                                                                                                alt="doctor-photo"
-                                                                                                height="80"></div>
-                                                                                        <label for="photo">Photo</label>
-                                                                                        <input type="file"
-                                                                                            class="form-control-file"
-                                                                                            id="photo" name="photo">
+                                                                                        <label>Gender</label>
+                                                                                        <select class="form-control"
+                                                                                            name="gender" required>
+                                                                                            <option value="1"
+                                                                                                @if ($doctor->status == 1) selected @endif>
+                                                                                                Male</option>
+                                                                                            <option value="0"
+                                                                                                @if ($doctor->status == 0) selected @endif>
+                                                                                                Female</option>
+                                                                                        </select>
+                                                                                    </div>
+                                                                                    <div class="form-group">
+                                                                                        <label>Status</label>
+                                                                                        <select class="form-control"
+                                                                                            name="status" required>
+                                                                                            <option value="1"
+                                                                                                @if ($doctor->status == 1) selected @endif>
+                                                                                                Active</option>
+                                                                                            <option value="0"
+                                                                                                @if ($doctor->status == 0) selected @endif>
+                                                                                                Inactive</option>
+                                                                                        </select>
+                                                                                    </div>
+                                                                                    <div class="form-group">
+                                                                                        <label
+                                                                                            for="description">Description</label>
+                                                                                        <input type="text"
+                                                                                            class="form-control"
+                                                                                            id="description"
+                                                                                            value="{{ $doctor->description }}"
+                                                                                            name="description" required>
+                                                                                    </div>
+                                                                                    <div class="form-group ">
+                                                                                        <label
+                                                                                            for="doctor-year">Years of experience</label>
+                                                                                        <input type="text"
+                                                                                            class="form-control"
+                                                                                            id="doctor-year"
+                                                                                            value="{{ $doctor->yoe }}"
+                                                                                            name="yoe" required>
                                                                                     </div>
                                                                                 </div>
+
+
                                                                                 <!-- /.card-body -->
                                                                                 <div class="card-footer">
                                                                                     <button type="submit"
                                                                                         class="btn btn-primary">Submit</button>
                                                                                 </div>
-                                                                              </form>
+                                                                            </form>
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -194,7 +246,7 @@
                                         @csrf
                                         <div class="card-body">
                                             <div class="row">
-                                                <div class="form-group col-md-6">
+                                                <div class="form-group col-md-5">
                                                     <label for="doctor-name">Name</label>
                                                     <input type="text" class="form-control" id="doctor-name"
                                                         placeholder="Name" name="name" required>
@@ -205,8 +257,38 @@
                                                         <span class="text-danger">{{ $message }}</span>
                                                     @enderror
                                                 </div>
-
+                                                <div class="form-group col-md-2">
+                                                    <label>Gender</label>
+                                                    <select class="form-control" name="gender" required>
+                                                        <option value="1"
+                                                            @if ($doctor->status == 1) selected @endif>
+                                                            Male</option>
+                                                        <option value="0"
+                                                            @if ($doctor->status == 0) selected @endif>
+                                                            Female</option>
+                                                    </select>
+                                                </div>
+                                                <div class="form-group col-md-2">
+                                                    <label>Status</label>
+                                                    <select class="form-control" name="status" required>
+                                                        <option value="1"
+                                                            @if ($doctor->status == 1) selected @endif>
+                                                            Active</option>
+                                                        <option value="0"
+                                                            @if ($doctor->status == 0) selected @endif>
+                                                            Inactive</option>
+                                                    </select>
+                                                </div>
                                                 <div class="form-group col-md-3">
+                                                    <label
+                                                        for="doctor-year">Years of experience</label>
+                                                    <input type="text"
+                                                        class="form-control"
+                                                        id="doctor-year"
+                                                        value="{{ $doctor->yoe }}"
+                                                        name="yoe" required>
+                                                </div>
+                                                <div class="form-group col-md-6">
                                                     <label for="phone-no">Phone</label>
                                                     <input type="number" class="form-control" id="phone-no"
                                                         placeholder="Contact No" name="phone" required>
@@ -243,6 +325,8 @@
                                                         <span class="text-danger">{{ $message }}</span>
                                                     @enderror
                                                 </div>
+
+
                                                 <div class="form-group col-md-3">
                                                     <label for="password">{{ __('Password') }}</label>
                                                     <input id="password" type="password"
@@ -262,6 +346,13 @@
                                                     <label for="password-confirm">{{ __('Confirm Password') }}</label>
                                                     <input id="password-confirm" type="password" class="form-control"
                                                         name="password_confirmation" required autocomplete="new-password">
+                                                </div>
+
+
+                                                <div class="form-group col-md-6">
+                                                    <label for="description">Description</label>
+                                                    <input type="text" class="form-control" id="description"
+                                                        value="{{ $doctor->description }}" name="description" required>
                                                 </div>
                                                 <div class="form-group col-md-6">
                                                     <label>Department</label>

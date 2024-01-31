@@ -25,7 +25,9 @@
                         </div>
                         <div class="experts_name text-center">
                             <h3>{{ $doctor->name }}</h3>
-                            <span>{{ $doctor->speciality }}</span>
+                            <span>Gender: {{ $doctor->gender }}</span><br>
+                            <span>Year of Experience: {{ $doctor->yoe }}</span><br>
+                            <span>Speciality: {{ $doctor->speciality }}</span>
                         </div>
                     </div>
                 </div>

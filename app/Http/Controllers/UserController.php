@@ -45,7 +45,7 @@ class UserController extends Controller
         ]);
 
         if (request('photo')) {
-            $inputs['photo'] = request('photo')->store('image');
+            $inputs['photo'] = request('photo')->store('images');
         }
 
         $user->update($inputs);

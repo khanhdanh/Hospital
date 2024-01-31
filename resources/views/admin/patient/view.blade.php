@@ -41,8 +41,6 @@
 							<th>Phone</th>
 							<th>Blood Group</th>
 							<th>Age</th>
-							<th>Created At</th>
-							<th>Updated At</th>
 							<th>Action</th>
 						</tr>
 					</thead>

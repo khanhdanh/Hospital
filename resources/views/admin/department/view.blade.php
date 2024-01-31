@@ -103,7 +103,7 @@
                                                                                                 Active</option>
                                                                                             <option value="0"
                                                                                                 @if ($department->status == 0) selected @endif>
-                                                                                                Deactive</option>
+                                                                                                Inactive</option>
                                                                                         </select>
                                                                                     </div>
 

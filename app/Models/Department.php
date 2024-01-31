@@ -15,6 +15,14 @@ class Department extends Model
         return asset('storage/app/'. $value);
     }
 
+    public function getStatusAttribute($value) {
+        if ($value == 1) {
+            return "Active";
+        } else if ($value == 0) {
+            return "Inactive";
+        }
+    }
+
     public function doctors()
     {
         return $this->hasMany(Doctor::class);

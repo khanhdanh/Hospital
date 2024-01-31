@@ -11,8 +11,7 @@
 
 			<div class="card-body">
 				<div class="text-center mb-4">
-                    <img class="profile-user-img img-fluid img-circle"
-                     src="{{ $user->photo }}"
+                    <img class="profile-user-img img-fluid img-circle" src="{{ $user->photo }}"
                     alt="User profile picture">
 
 	            </div>

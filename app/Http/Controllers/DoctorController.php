@@ -28,6 +28,9 @@ class DoctorController extends Controller
             'phone'=> 'required',
             'speciality' => 'required',
             'department_id' => 'required',
+            'gender'=> 'required',
+            'status' => 'required',
+            'description' => 'required',
             'password' => 'required|string|min:8|confirmed',
         ]);
 
@@ -44,8 +47,10 @@ class DoctorController extends Controller
         $doctor->name = request('name');
         $doctor->email = request('email');
         $doctor->phone = request('phone');
+        $doctor->gender = request('gender');
         $doctor->department_id = request('department_id');
         $doctor->speciality = request('speciality');
+        $doctor->description = request('description');
         $doctor->slug = Str::slug(request('name'));
         $doctor->status = 1;
 

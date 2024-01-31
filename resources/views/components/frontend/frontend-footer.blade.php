@@ -36,7 +36,7 @@
                 <div class="col-xl-2 offset-xl-1 col-md-6 col-lg-3">
                     <div class="footer_widget">
                         <h3 class="footer_title">
-                        Departments
+                            Departments
                         </h3>
                         <ul>
                             <li><a href="#">General Practice & Family Medicine</a></li>
@@ -48,25 +48,27 @@
                 <div class="col-xl-2 col-md-6 col-lg-2">
                     <div class="footer_widget">
                         <h3 class="footer_title">
-                        Useful Links
+                            Useful Links
                         </h3>
                         <ul>
                             <li><a href="{{ route('ui.about') }}">ABOUT</a></li>
                             <li><a href="{{ route('ui.contact') }}">CONTACT</a></li>
                             <li><a href="{{ route('appointment.add') }}">APPOINTMENT</a></li>
                             <li><a href="{{ route('ui.service') }}">SERVICE</a></li>
+
                         </ul>
                     </div>
                 </div>
                 <div class="col-xl-3 col-md-6 col-lg-3">
                     <div class="footer_widget">
                         <h3 class="footer_title">
-                        Address
+                            Address
                         </h3>
                         <p>
                             590 CMT8, Dist 3, HCMC <br />
                             +10 367 467 8934 <br />
-                            <a href="https://preview.colorlib.com/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="c9ada6aaa4acad89aaa6a7bda8aabde7aaa6a4">[email&#160;protected]</a>
+                            <a href="https://preview.colorlib.com/cdn-cgi/l/email-protection" class="__cf_email__"
+                                data-cfemail="c9ada6aaa4acad89aaa6a7bda8aabde7aaa6a4">[email&#160;protected]</a>
                         </p>
                     </div>
                 </div>
@@ -82,9 +84,11 @@
                         Copyright &copy;
                         <script data-cfasync="false" src="../../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
                         <script>
-                        document.write(new Date().getFullYear());
+                            document.write(new Date().getFullYear());
                         </script>
-                        All rights reserved</i><a href="https://colorlib.com/" target="_blank"></a>
+                        All rights reserved</i><a href="https://colorlib.com/" target="_blank">
+                            <li><a href="{{ route('register') }}">REGISTER</a></li>
+                        </a>
                     </p>
                 </div>
             </div>
